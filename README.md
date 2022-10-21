@@ -1,10 +1,11 @@
-# Nombre del juego (<- borrar y completar)
+# Moving Out
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Avril Dinora Martina Lopez (avrilmartina)
+- Dario Victor Ozuna (vozuna7) 
+- Gabriel Enrique Di Giorgio (gabdigiorgio)
+- Alejo Gabriel Travieso (alejotravieso)
 
 ## Capturas
 
