@@ -9,7 +9,8 @@ object jugador {
 	var itemActual
 	var position = game.origin()
 	var posicionInicial = position
-
+     
+     
 	method tieneItem() = itemActual != null
 
 	method position() = position

@@ -18,6 +18,9 @@ object nivel {
 	method crearItem(x,y){
 		colisionables.add(new Item(position = game.at(x,y)))
 	}
+	method agregarColisionable(nuevoColisionable) {
+	    colisionables.add(nuevoColisionable)
+	}
 	
 	
 
