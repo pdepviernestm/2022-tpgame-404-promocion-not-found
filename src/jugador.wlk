@@ -1,5 +1,7 @@
 import wollok.game.*
 import posicionCercana.*
+import item.*
+import nivel.*
 
 object jugador {
 
@@ -16,10 +18,13 @@ object jugador {
 
 	method position(posicionFinal) {
 		posicionInicial = position.clone()
+		if(!self.tieneItem()){
 		position = posicionFinal
-		if (self.tieneItem()) {
-			itemActual.serLlevado(posicionFinal, posicionInicial)
 		}
+		else if (self.tieneItem() && itemActual.puedeSerLlevado(posicionFinal, posicionInicial)) {
+		position = posicionFinal
+		itemActual.serLlevado(posicionFinal, posicionInicial)
+		} 
 	}
 
 	method agarrarItem() {
@@ -33,6 +38,16 @@ object jugador {
 	method soltarItem() {
 		itemActual = null
 	}
+	
+   /* method colisiona(direccion) {
+    	if(itemActual){
+    	return 7
+    	}
+    	else
+		return colisionables.any{ unColisionable => unColisionable.position() == direccion.posicionSiguiente(self) }
+	}*/
+	
 
 }
+
 

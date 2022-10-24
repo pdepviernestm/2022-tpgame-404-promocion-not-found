@@ -6,5 +6,6 @@ object config {
 	const property ancho = 20
 	const property celdas = 50
 
+
 }
 

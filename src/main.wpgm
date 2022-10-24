@@ -2,6 +2,7 @@ import wollok.game.*
 import config.*
 import jugador.*
 import item.*
+import nivel.*
 
 program main {
 	game.height(config.alto())
@@ -11,12 +12,9 @@ program main {
 	game.boardGround("fondo.png")
 	game.addVisualCharacter(jugador)
 	game.showAttributes(jugador)
-	
-	const caja_1 = new Item(position = game.center())
-	const caja_2 = new Item(position = game.center().up(1).right(1))
-	
-	game.addVisual(caja_1)
-	game.addVisual(caja_2)
+    nivel.ejecutar()
+    
+
 	keyboard.shift().onPressDo{ jugador.agarrarItem() }
 	keyboard.control().onPressDo{ jugador.soltarItem() }
 	game.start()
