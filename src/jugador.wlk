@@ -7,7 +7,7 @@ object jugador {
 	var property velocidad = 100
 	var itemActual
 	var position = game.origin()
-	var posicionInicial = position     
+	var posicionAnterior = position     
      
 	method tieneItem() = itemActual != null
 
@@ -16,18 +16,18 @@ object jugador {
 	method image() = "jugador.png"
 
 	method position(posicionFinal) {
-		posicionInicial = position.clone()
+		posicionAnterior = position.clone()
 		if(!self.tieneItem()){
 		position = posicionFinal
 		}
-		else if (self.tieneItem() && itemActual.puedeSerLlevado(posicionFinal, posicionInicial)) {
+		else if (self.tieneItem() && itemActual.puedeSerLlevado(posicionFinal, posicionAnterior)) {
 		position = posicionFinal
-		itemActual.serLlevado(posicionFinal, posicionInicial)
+		itemActual.serLlevado(posicionFinal, posicionAnterior)
 		} 
 	}
 
 	method agarrarItem() {
-		const posMasCercana = posicionCercana.obtener(position, posicionInicial, position)
+		const posMasCercana = posicionCercana.obtener(position, posicionAnterior, position)
 		const elementosEnEsaDireccion = posMasCercana.allElements()
 		if (not (elementosEnEsaDireccion.isEmpty())) {
 			itemActual = elementosEnEsaDireccion.first()
