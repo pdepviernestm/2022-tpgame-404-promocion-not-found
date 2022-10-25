@@ -12,9 +12,8 @@ program main {
 	game.boardGround("fondo.png")
 	game.addVisualCharacter(jugador)
 	game.showAttributes(jugador)
-    nivel.ejecutar()
-    
-
+	nivel.ejecutar()
+	
 	keyboard.shift().onPressDo{ jugador.agarrarItem() }
 	keyboard.control().onPressDo{ jugador.soltarItem() }
 	game.start()

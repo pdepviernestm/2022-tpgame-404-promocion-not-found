@@ -1,15 +1,13 @@
 import wollok.game.*
 import posicionCercana.*
 import item.*
-import nivel.*
 
 object jugador {
 
 	var property velocidad = 100
 	var itemActual
 	var position = game.origin()
-	var posicionInicial = position
-     
+	var posicionInicial = position     
      
 	method tieneItem() = itemActual != null
 
