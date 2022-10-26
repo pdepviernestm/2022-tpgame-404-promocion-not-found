@@ -12,43 +12,43 @@ object jugador {
      
      
 	method tieneItem() = itemActual != null
-
+	
 	method position() = position
 
 	method image() = "jugador.png"
 
-	method position(posicionFinal) {
+	method position(posicionFinal){
+		if (!self.colisiona(posicionFinal))
 		posicionInicial = position.clone()
-		if(!self.tieneItem()){
+		
+		if(!self.tieneItem() && !self.colisiona(posicionFinal)){
 		position = posicionFinal
 		}
-		else if (self.tieneItem() && itemActual.puedeSerLlevado(posicionFinal, posicionInicial)) {
+		else if (self.tieneItem() && itemActual.puedeSerLlevado(posicionFinal, posicionInicial)&& !self.colisiona(posicionFinal)){
 		position = posicionFinal
 		itemActual.serLlevado(posicionFinal, posicionInicial)
 		} 
 	}
 
-	method agarrarItem() {
+
+    method agarrarItem() {
 		const posMasCercana = posicionCercana.obtener(position, posicionInicial, position)
 		const elementosEnEsaDireccion = posMasCercana.allElements()
 		if (not (elementosEnEsaDireccion.isEmpty())) {
 			itemActual = elementosEnEsaDireccion.first()
-		}
-	}
+ 		}
+    }
 
 	method soltarItem() {
 		itemActual = null
+		nivel.ganar()
 	}
 	
-   /* method colisiona(direccion) {
-    	if(itemActual){
-    	return 7
-    	}
-    	else
-		return colisionables.any{ unColisionable => unColisionable.position() == direccion.posicionSiguiente(self) }
-	}*/
-	
-
+   method colisiona(direccion) {
+   	    if (self.tieneItem() && direccion==itemActual.position()){
+   	    return false
+   	    }
+   	    else 
+		return nivel.colisionables().any{unColisionable => unColisionable.position() == direccion}
+	}
 }
-
-

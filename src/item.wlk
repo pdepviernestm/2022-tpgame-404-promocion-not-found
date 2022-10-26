@@ -19,9 +19,19 @@ class Item {
 	 method colisiona(direccion) {
 		return nivel.colisionables().any{ unColisionable => unColisionable.position() == direccion }
 	}
+	
+	method estaEnElCamion(){
+		return nivel.celdasCamion().any({c=>c.position()==position})
+	}
 
 }
 
+class Borde {
+	var property position
+}
 
+class PisoCamion {
+	var property position
+}
 
 	

@@ -16,6 +16,6 @@ program main {
     
 
 	keyboard.shift().onPressDo{ jugador.agarrarItem() }
-	keyboard.control().onPressDo{ jugador.soltarItem() }
+	keyboard.control().onPressDo{ jugador.soltarItem()}
 	game.start()
 }

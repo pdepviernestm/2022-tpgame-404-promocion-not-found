@@ -6,4 +6,9 @@ object posicionCercana {
 		return posicionActual.up(diferenciaY).right(diferenciaX)
 	}
 
+
+
 }
+
+
+
