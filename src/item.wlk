@@ -8,12 +8,12 @@ class Item {
 
 	method image() = "caja.png"
 	
-	method puedeSerLlevado(posFinalPortador, posInicialPortador){
-		return !self.colisiona(posicionCercana.obtener(posFinalPortador, posInicialPortador, position))
+	method puedeSerLlevado(posFinalPortador, posAnteriorPortador){
+		return !self.colisiona(posicionCercana.obtener(posFinalPortador, posAnteriorPortador, position))
 	}
 
-	method serLlevado(posFinalPortador, posInicialPortador) {
-		position = posicionCercana.obtener(posFinalPortador, posInicialPortador, position)
+	method serLlevado(posFinalPortador, posAnteriorPortador) {
+		position = posicionCercana.obtener(posFinalPortador, posAnteriorPortador, position)
 	}
 	
 	 method colisiona(direccion) {
