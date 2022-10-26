@@ -1,6 +1,7 @@
 import wollok.game.*
 import posicionCercana.*
 import item.*
+import nivel.*
 
 object jugador {
 
