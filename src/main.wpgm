@@ -10,11 +10,11 @@ program main {
 	game.cellSize(config.celdas())
 	game.title("Moving Out")
 	game.boardGround("fondo.png")
-	game.addVisualCharacter(jugador)
+	game.addVisual(jugador)
 	game.showAttributes(jugador)
+	
+	config.teclasJugador()
 	nivel.ejecutar()
 	
-	keyboard.shift().onPressDo{ jugador.agarrarItem() }
-	keyboard.control().onPressDo{ jugador.soltarItem()}
 	game.start()
 }
