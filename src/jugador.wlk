@@ -21,7 +21,7 @@ object jugador {
 
 	method mover(direccion) {
 		self.setearDireccion(direccion)
-		if (!self.colisiona(direccion)) {
+		if (!self.colisiona()) {
 			position = direccion.posSiguiente(position)
 			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) {
 				itemActual.serLlevado(self)
@@ -63,7 +63,7 @@ object jugador {
 		return self.obtenerPosEnfrente() == itemActual.position()
 	}
 
-	method colisiona(direccion) {
+	method colisiona() {
 		if (self.tieneItem() && self.itemActualEnfrente()) {
 			return false
 		} else return nivel.colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
