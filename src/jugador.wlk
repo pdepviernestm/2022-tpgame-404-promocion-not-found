@@ -11,7 +11,11 @@ object jugador {
 	var property direccionAgarre
 	var property itemActual
 
-	method image() = "jugador.png"
+	method image() {
+		if (!self.tieneItem()) {
+			return "jugador_" + direccionActual.toString() + ".png"
+		} else return "jugador_" + direccionAgarre.toString() + ".png"
+	}
 
 	method position() = position
 
