@@ -34,7 +34,9 @@ class Borde {
 
 class PisoCamion {
 
-	var property position
+	var property position = game.center()
+	
+	method image() = "celdaCamion.png"
 
 }
 
