@@ -8,9 +8,9 @@ object nivel {
 	const property celdasCamion=[]
 	
 	method ejecutar(){
-	const caja_1 = new Item(position = game.center())
+	const caja_1 = new Item(position = game.at(5,7))
 	muebles.add(caja_1)
-	const caja_2 = new Item(position = game.center().up(1).right(1))
+	const caja_2 = new Item(position = game.at(8,10))
 	muebles.add(caja_2)
 		
 	muebles.forEach({m=>colisionables.add(m)})
@@ -23,6 +23,8 @@ object nivel {
     
     celdasCamion.add(pisoCamion_1)
     celdasCamion.add(pisoCamion_2)
+    
+    celdasCamion.forEach({m=>game.addVisual(m)})
     	/* 
     self.crearCeldaCamion(0,2)	
     self.crearCeldaCamion(0,1)	
