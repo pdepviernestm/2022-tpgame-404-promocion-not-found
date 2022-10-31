@@ -40,13 +40,19 @@ object nivel {
 	self.agregarParedX(8,2,11)
 	self.agregarParedX(8,2,12)
 	}
-	
-	method agregarBordes(ancho, alto, origenX, origenY) {
-	alto.times({i => colisionables.add(new Borde(position = game.at(origenX, i + origenY - 1)))})
-	alto.times({i => colisionables.add(new Borde(position = game.at(ancho + origenX - 1, i + origenY - 1)))})
 
-	(ancho-2).times({j => colisionables.add(new Borde(position = game.at(j + origenX, origenY)))})
-	(ancho-2).times({j => colisionables.add(new Borde(position = game.at(j + origenX, alto + origenY - 1)))})
+	method agregarBordes(ancho, alto, origenX, origenY) {
+		alto.times({ i => colisionables.add(new Borde(position = game.at(origenX, i + origenY - 1)))})
+		alto.times({ i => colisionables.add(new Borde(position = game.at(ancho + origenX - 1, i + origenY - 1)))})
+		(ancho - 2).times({ j => colisionables.add(new Borde(position = game.at(j + origenX, origenY)))})
+		(ancho - 2).times({ j => colisionables.add(new Borde(position = game.at(j + origenX, alto + origenY - 1)))})
+	}
+
+	method agregarPared(xInicial, yInicial, xFinal, yFinal) {
+		const largoX = (xFinal - xInicial).abs() + 1
+		const largoY = (yFinal - yInicial).abs() + 1
+		largoX.times({ i => colisionables.add(new Borde(position = game.at(xInicial + i - 1, yInicial)))})
+		largoY.times({ i => colisionables.add(new Borde(position = game.at(xInicial, yInicial + i - 1)))})
 	}
 	
 	method agregarParedX(ancho, origenX, origenY) {
@@ -69,16 +75,19 @@ object nivel {
 	} 
 	
 	method agregarColisionable(nuevoColisionable) {
-	    colisionables.add(nuevoColisionable)
+		colisionables.add(nuevoColisionable)
 	}
-	
-	method todosLosMueblesEstanEnCamion(){
-		return muebles.all({m=>m.estaEnElCamion()})
+
+	method todosLosMueblesEstanEnCamion() {
+		return muebles.all({ m => m.estaEnElCamion() })
 	}
+
 	method ganar() {
-       if (self.todosLosMueblesEstanEnCamion()){
-       	game.say(jugador,"¡GANASTE! :)")
-        game.schedule(2000, { game.stop()})       }
+		if (self.todosLosMueblesEstanEnCamion()) {
+			game.say(jugador, "¡GANASTE! :)")
+			game.schedule(2000, { game.stop()})
+		}
 	}
-	
+
 }
+
