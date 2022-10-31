@@ -16,6 +16,15 @@ object jugador {
 			return "jugador_" + direccionActual.toString() + ".png"
 		} else return "jugador_" + direccionAgarre.toString() + ".png"
 	}
+	
+	/*  Si el string que devuelve imagen es "jugador_direccion[].png"
+	method image() {
+		if (!self.tieneItem()) {
+			return "jugador_" + direccionActual.toString().reverse().drop(2).reverse() + ".png"
+		} else return "jugador_" + direccionAgarre.toString().reverse().drop(2).reverse() + ".png"
+	}
+	
+	*/
 
 	method position() = position
 
