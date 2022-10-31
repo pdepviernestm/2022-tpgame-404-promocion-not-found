@@ -32,8 +32,13 @@ object nivel {
 	
 	
 	self.agregarBordes(22,16,-1,-1)
-	
-	
+	self.agregarParedY(10,1,3)
+	self.agregarParedY(10,10,3)
+	self.agregarParedY(2,6,9)
+    self.agregarParedX(3,2,3)
+	self.agregarParedX(3,7,3)
+	self.agregarParedX(8,2,11)
+	self.agregarParedX(8,2,12)
 	}
 	
 	method agregarBordes(ancho, alto, origenX, origenY) {
@@ -44,6 +49,15 @@ object nivel {
 	(ancho-2).times({j => colisionables.add(new Borde(position = game.at(j + origenX, alto + origenY - 1)))})
 	}
 	
+	method agregarParedX(ancho, origenX, origenY) {
+	ancho.times({i => colisionables.add(new Pared(position = game.at(origenX+i-1, origenY)))})
+    }
+	
+	method agregarParedY(alto,origenX,origenY){
+	alto.times({i => colisionables.add(new Pared(position = game.at(origenX,origenY+i-1)))})
+	}
+	
+	
 	
 	//otra posibilidad
 	method crearItem(x,y){
@@ -51,7 +65,7 @@ object nivel {
 	}
 	
 	method crearCeldaCamion(x,y){
-    celdasCamion.add(new PisoCamion (position = game.at(0,1)))
+    celdasCamion.add(new PisoCamion (position = game.at(x,y)))
 	} 
 	
 	method agregarColisionable(nuevoColisionable) {

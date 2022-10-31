@@ -32,6 +32,12 @@ class Borde {
 
 }
 
+class Pared {
+
+	var property position
+
+}
+
 class PisoCamion {
 
 	var property position = game.center()
