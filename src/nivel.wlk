@@ -17,8 +17,8 @@ object nivel {
 	muebles.forEach({m=>game.addVisual(m)})
 
  	
- 	const pisoCamion_1 = new PisoCamion (position = game.at(0,2))
-    const pisoCamion_2 = new PisoCamion (position = game.at(0,1))
+    const pisoCamion_1 = new PisoCamion (position = game.at(0,2),imagen = "camionAtras.png")
+    const pisoCamion_2 = new PisoCamion (position = game.at(0,1),imagen = "camionFrente.png")
     
     
     celdasCamion.add(pisoCamion_1)
