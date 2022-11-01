@@ -71,7 +71,7 @@ object nivel {
 	}
 	
 	method crearCeldaCamion(x,y){
-    celdasCamion.add(new PisoCamion (position = game.at(x,y)))
+    celdasCamion.add(new PisoCamion (position = game.at(x,y),imagen = "celdaCamion.png")))
 	} 
 	
 	method agregarColisionable(nuevoColisionable) {
