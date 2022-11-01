@@ -2,6 +2,7 @@ import wollok.game.*
 import direcciones.*
 import posicionCercana.*
 import nivel.*
+import config.*
 
 object jugador {
 
@@ -35,10 +36,24 @@ object jugador {
 	method mover(direccion) {
 		self.setearDireccion(direccion)
 		if (!self.colisiona()) {
-			position = direccion.posSiguiente(position)
+			if (!self.tieneItem())
+			    position = direccion.posSiguiente(position)
 			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) {
+			    position = direccion.posSiguiente(position)
+				itemActual.serLlevado(self)}
+			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual)
+			        self.soltarItem()
+		}
+	}
+
+method mover1(direccion) {
+		self.setearDireccion(direccion)
+		if (!self.colisiona()) {
+			position = direccion.posSiguiente(position)
+			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) 
 				itemActual.serLlevado(self)
-			} else self.soltarItem()
+			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual)
+			        self.soltarItem()
 		}
 	}
 
@@ -55,7 +70,7 @@ object jugador {
 		if (self.tieneItem()) {
 			itemActual = null
 			direccionAgarre = null
-			nivel.ganar()
+			config.nivelActual().ganar()
 		}
 	}
 
