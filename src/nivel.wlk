@@ -12,7 +12,7 @@ class Nivel {
 	
 	method ejecutar() {
 		config.nivelActual(self)
-		self.nivelSiguiente(nivelSiguiente)
+		//self.nivelSiguiente(nivelSiguiente)
 		self.cargarNivel()
 	}
 	
@@ -66,7 +66,29 @@ class Nivel {
 	
 }
 
-object nivel inherits Nivel(nivelSiguiente=fin){
+object menu inherits Nivel(nivelSiguiente=nivel1){
+
+	method image() = "menu.png"
+
+	method position() = game.origin()
+
+	override method ejecutar() {
+		game.addVisual(self)
+	}
+
+	method empezarJuego() {
+		if (config.nivelActual() == self) {
+			game.removeVisual(self)
+			nivelSiguiente.ejecutar()
+		}
+	}
+
+
+}
+	
+
+
+object nivel1 inherits Nivel(nivelSiguiente=fin){
 	
 	override method cargarNivel(){
 
@@ -91,6 +113,9 @@ object nivel inherits Nivel(nivelSiguiente=fin){
     self.crearCeldaCamion(0,1)	
     	*/
     self.cargarElementosNivel()
+    
+    game.addVisual(jugador)
+	game.showAttributes(jugador)
 	}
 }
 

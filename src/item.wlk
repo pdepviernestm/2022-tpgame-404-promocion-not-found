@@ -1,6 +1,7 @@
 import wollok.game.*
 import direcciones.*
 import nivel.*
+import config.*
 
 class Item {
 
@@ -16,12 +17,12 @@ class Item {
 		position = jugador.direccionAgarre().posSiguiente(jugador.position())
 	}
 
-	method colisiona(direccion) {
-		return nivel.colisionables().any{ colisionable => colisionable.position() == direccion.posSiguiente(position) }
-	}
+	method colisiona(direccion){
+		return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == direccion.posSiguiente(position) }
+	} 
 
-	method estaEnElCamion() {
-		return nivel.celdasCamion().any({ c => c.position() == position })
+	method estaEnElCamion(){
+		return config.nivelActual().celdasCamion().any({ c => c.position() == position })
 	}
 
 }

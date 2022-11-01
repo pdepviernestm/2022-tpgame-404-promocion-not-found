@@ -8,7 +8,7 @@ object config {
 	const property alto = 14
 	const property ancho = 20
 	const property celdas = 50
-	var property nivelActual = nivel
+	var property nivelActual = menu
 	
 	method teclasJugador() {
 		keyboard.up().onPressDo{ jugador.mover(arriba)}
@@ -17,6 +17,7 @@ object config {
 		keyboard.right().onPressDo{ jugador.mover(derecha)}
 		keyboard.shift().onPressDo{ jugador.agarrarItem()}
 		keyboard.control().onPressDo{ jugador.soltarItem()}
+		keyboard.enter().onPressDo{ nivelActual.empezarJuego()}
 	}
 	
 	method nivelActual(unNivel){

@@ -94,7 +94,7 @@ method mover1(direccion) {
 	method colisiona() {
 		if (self.tieneItem() && self.itemActualEnfrente()) {
 			return false
-		} else return nivel.colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
+		} else return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
 	}
 
 }
