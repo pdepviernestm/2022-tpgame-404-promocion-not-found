@@ -42,7 +42,9 @@ class PisoCamion {
 
 	var property position = game.center()
 	
-	method image() = "celdaCamion.png"
+	var property imagen
+	
+	method image() = imagen
 
 }
 
