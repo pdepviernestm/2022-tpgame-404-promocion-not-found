@@ -41,8 +41,9 @@ object jugador {
 			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) {
 			    position = direccion.posSiguiente(position)
 				itemActual.serLlevado(self)}
-			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual)
+			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual){
 			        self.soltarItem()
+			        position = direccion.posSiguiente(position)}
 		}
 	}
 
