@@ -1,6 +1,7 @@
 import wollok.game.*
 import item.*
 import jugador.*
+import powerUp.*
 import config.*
 
 class Nivel {
@@ -63,7 +64,24 @@ class Nivel {
 		muebles.forEach({m=>colisionables.add(m)})
 	}
 	
+	method esPosicionLegal(posicion) = !(config.nivelActual().colisionables().map{c => c.position()}).contains(posicion)
 	
+	method generarPosicionLegal()
+	{
+		const posicionX = 0.randomUpTo(config.ancho())
+		const posicionY = 0.randomUpTo(config.alto())
+		
+		if(self.esPosicionLegal(game.at(posicionX, posicionY)))
+		{
+			return game.at(posicionX, posicionY)
+		}
+		else return self.generarPosicionLegal()
+	}
+	
+	method crearPowerUps(){
+		const powerUp = new VelocidadPower(position = self.generarPosicionLegal())
+		game.addVisual(powerUp)
+	}
 }
 
 object menu inherits Nivel(nivelSiguiente=nivel1){
@@ -110,7 +128,9 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.agregarParedX(3,16,12) // pared del camion
 	self.agregarParedX(3,16,3) // pared del camion
 	self.agregarParedY(8,19,4) // pared del camion
-
+	
+	self.crearPowerUps()
+	
  	/*const pisoCamion_1 = new PisoCamion (position = game.at(0,2),imagen = "camionAtras.png")
     const pisoCamion_2 = new PisoCamion (position = game.at(0,1),imagen = "camionFrente.png")
 	*/

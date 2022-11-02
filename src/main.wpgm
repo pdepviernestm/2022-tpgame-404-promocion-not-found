@@ -15,7 +15,7 @@ program main {
 	config.teclasJugador()
 	menu.ejecutar()
 	
-	game.onCollideDo(jugador,  {powerUp => jugador.agarrarPoder(powerUp)})
+	//game.onCollideDo(jugador,  {powerUp => jugador.agarrarPoder(powerUp)})
 	
 	game.start()
 }
