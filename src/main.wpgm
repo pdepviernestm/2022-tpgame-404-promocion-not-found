@@ -2,6 +2,7 @@ import wollok.game.*
 import config.*
 import jugador.*
 import item.*
+import powerUp.*
 import nivel.*
 
 program main {
@@ -13,6 +14,8 @@ program main {
 	
 	config.teclasJugador()
 	menu.ejecutar()
+	
+	game.onCollideDo(jugador,  {powerUp => jugador.agarrarPoder(powerUp)})
 	
 	game.start()
 }

@@ -1,13 +1,14 @@
 import wollok.game.*
 import direcciones.*
-import posicionCercana.*
+import powerUp.*
 import nivel.*
 import config.*
 
 object jugador {
 
 	var property position = game.origin()
-	var velocidad = 100
+	var property velocidad = 100
+	var powerUpActual
 	var property direccionActual = arriba
 	var property direccionAgarre
 	var property itemActual
@@ -30,7 +31,6 @@ object jugador {
 		position = game.at(x, y)
 		direccionActual = abajo
 	}
-   
     
 	method position() = position
     
@@ -101,6 +101,12 @@ method mover1(direccion) {
 		if (self.tieneItem() && self.itemActualEnfrente()) {
 			return false
 		} else return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
+	}
+	
+	method agarrarPoder(powerUp)
+	{	
+		powerUpActual = powerUp
+		powerUpActual.darPoder(self)
 	}
 
 }
