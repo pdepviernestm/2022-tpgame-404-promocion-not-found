@@ -100,6 +100,9 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.agregarParedX(3,7,3)
 	self.agregarParedX(8,2,11)
 	self.agregarParedX(8,2,12)
+	self.agregarParedX(3,16,12) // pared del camion
+	self.agregarParedX(3,16,3) // pared del camion
+	self.agregarParedY(8,19,4) // pared del camion
 	self.crearMueble(5,7)
 	self.crearMueble(8,10)
 
