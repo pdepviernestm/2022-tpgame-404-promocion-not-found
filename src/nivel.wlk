@@ -31,8 +31,8 @@ class Nivel {
 	}
 	
 	
-	method crearMueble(x,y){
-		muebles.add(new Item(position = game.at(x,y)))
+	method crearMueble(x,y,imagen){
+		muebles.add(new Item(position = game.at(x,y),image= imagen))
 	}
 	
 	method crearCeldaCamion(x,y,image){
@@ -100,22 +100,37 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.agregarParedX(3,7,3)
 	self.agregarParedX(8,2,11)
 	self.agregarParedX(8,2,12)
-	self.crearMueble(5,7)
-	self.crearMueble(8,10)
-
+	//self.crearMueble(5,7,"caja.png")
+	self.crearMueble(8,10,"caja.png")
+	self.crearMueble(2,6,"silla_derecha.png")
+	self.crearMueble(4,6,"silla_izquierda.png")
+	self.crearMueble(3,7,"silla_abajo.png")
+	self.crearMueble(3,5,"silla_arriba.png")
+    self.crearMueble(3,6,"mesa.png")
  	/*const pisoCamion_1 = new PisoCamion (position = game.at(0,2),imagen = "camionAtras.png")
     const pisoCamion_2 = new PisoCamion (position = game.at(0,1),imagen = "camionFrente.png")
 	*/
-	self.crearCeldaCamion(0,2,"camionAtras.png")
-	self.crearCeldaCamion(0,1,"camionFrente.png")
+	self.crearCeldaCamion(14,7,"camionAtras.png")
+	self.crearCeldaCamion(15,7,"camionAtras.png")
+	self.crearCeldaCamion(16,7,"camionAtras.png")
+	self.crearCeldaCamion(14,6,"celdaCamion.png")
+	self.crearCeldaCamion(15,6,"celdaCamion.png")
+	self.crearCeldaCamion(16,6,"celdaCamion.png")
+	self.crearCeldaCamion(14,5,"celdaCamion.png")
+	self.crearCeldaCamion(15,5,"celdaCamion.png")
+	self.crearCeldaCamion(16,5,"celdaCamion.png")
+	self.crearCeldaCamion(14,4,"camionFrente.png")
+	self.crearCeldaCamion(15,4,"camionFrente.png")
+	self.crearCeldaCamion(16,4,"camionFrente.png")
     	/* 
     self.crearCeldaCamion(0,2)	
     self.crearCeldaCamion(0,1)	
     	*/
     self.cargarElementosNivel()
-    
     game.addVisual(jugador)
-	game.showAttributes(jugador)
+    game.showAttributes(jugador)
+    jugador.ubicarInicio(15,3)
+	
 	}
 }
 

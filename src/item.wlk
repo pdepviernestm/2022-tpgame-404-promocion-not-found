@@ -7,7 +7,7 @@ class Item {
 
 	var property position = game.center()
 
-	method image() = "caja.png"
+	var property image
 
 	method puedeSerLlevado(jugador) {
 		return !self.colisiona(jugador.direccionActual())

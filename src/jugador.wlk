@@ -6,7 +6,7 @@ import config.*
 
 object jugador {
 
-	var position = game.origin()
+	var property position = game.origin()
 	var velocidad = 100
 	var property direccionActual = arriba
 	var property direccionAgarre
@@ -26,9 +26,14 @@ object jugador {
 	}
 	
 	*/
-
+    method ubicarInicio(x,y){
+		position = game.at(x, y)
+		direccionActual = abajo
+	}
+   
+    
 	method position() = position
-
+    
 	method setearDireccion(direccion) {
 		direccionActual = direccion
 	}
@@ -85,7 +90,7 @@ method mover1(direccion) {
 
 	method obtenerItemEnfrente() {
 		const posicionEnfrente = self.obtenerPosEnfrente()
-		return posicionEnfrente.allElements().first()
+		return posicionEnfrente.allElements().filter({e=>config.nivelActual().muebles().contains(e)}).first()
 	}
 
 	method itemActualEnfrente() {
