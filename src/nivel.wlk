@@ -107,21 +107,15 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.crearMueble(3,7,"silla_abajo.png")
 	self.crearMueble(3,5,"silla_arriba.png")
     self.crearMueble(3,6,"mesa.png")
+	self.agregarParedX(3,16,12) // pared del camion
+	self.agregarParedX(3,16,3) // pared del camion
+	self.agregarParedY(8,19,4) // pared del camion
+
  	/*const pisoCamion_1 = new PisoCamion (position = game.at(0,2),imagen = "camionAtras.png")
     const pisoCamion_2 = new PisoCamion (position = game.at(0,1),imagen = "camionFrente.png")
 	*/
-	self.crearCeldaCamion(14,7,"camionAtras.png")
-	self.crearCeldaCamion(15,7,"camionAtras.png")
-	self.crearCeldaCamion(16,7,"camionAtras.png")
-	self.crearCeldaCamion(14,6,"celdaCamion.png")
-	self.crearCeldaCamion(15,6,"celdaCamion.png")
-	self.crearCeldaCamion(16,6,"celdaCamion.png")
-	self.crearCeldaCamion(14,5,"celdaCamion.png")
-	self.crearCeldaCamion(15,5,"celdaCamion.png")
-	self.crearCeldaCamion(16,5,"celdaCamion.png")
-	self.crearCeldaCamion(14,4,"camionFrente.png")
-	self.crearCeldaCamion(15,4,"camionFrente.png")
-	self.crearCeldaCamion(16,4,"camionFrente.png")
+	
+	
     	/* 
     self.crearCeldaCamion(0,2)	
     self.crearCeldaCamion(0,1)	
