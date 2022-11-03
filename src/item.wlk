@@ -18,8 +18,9 @@ class Item {
 	}
 
 	method colisiona(direccion){
-		return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == direccion.posSiguiente(position) }
+	return game.getObjectsIn(direccion.posSiguiente(position)).any({ e => config.nivelActual().colisionables().contains(e)})
 	} 
+	//return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == direccion.posSiguiente(position) }
 
 	method estaEnElCamion(){
 		return config.nivelActual().celdasCamion().any({ c => c.position() == position })
@@ -30,13 +31,13 @@ class Item {
 class Borde {
 
 	var property position
-
+    method image() = "sinImagen.png"
 }
 
 class Pared {
 
 	var property position
-
+    method image() = "sinImagen.png"
 }
 
 class PisoCamion {

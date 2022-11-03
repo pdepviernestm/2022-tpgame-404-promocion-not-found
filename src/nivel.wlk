@@ -8,6 +8,7 @@ class Nivel {
 	const property colisionables=[]
 	const property muebles=[]
 	const property celdasCamion=[]
+	const property paredes=[]
 	var property nivelSiguiente
 	
 	
@@ -18,17 +19,17 @@ class Nivel {
 	}
 	
 	method agregarBordes(ancho, alto, origenX, origenY) {
-		alto.times({ i => colisionables.add(new Borde(position = game.at(origenX, i + origenY - 1)))})
-		alto.times({ i => colisionables.add(new Borde(position = game.at(ancho + origenX - 1, i + origenY - 1)))})
-		(ancho - 2).times({ j => colisionables.add(new Borde(position = game.at(j + origenX, origenY)))})
-		(ancho - 2).times({ j => colisionables.add(new Borde(position = game.at(j + origenX, alto + origenY - 1)))})
+		alto.times({ i => paredes.add(new Borde(position = game.at(origenX, i + origenY - 1)))})
+		alto.times({ i => paredes.add(new Borde(position = game.at(ancho + origenX - 1, i + origenY - 1)))})
+		(ancho - 2).times({ j => paredes.add(new Borde(position = game.at(j + origenX, origenY)))})
+		(ancho - 2).times({ j => paredes.add(new Borde(position = game.at(j + origenX, alto + origenY - 1)))})
 	}
 	method agregarParedX(ancho, origenX, origenY) {
-		ancho.times({i => colisionables.add(new Pared(position = game.at(origenX+i-1, origenY)))})
+		ancho.times({i => paredes.add(new Pared(position = game.at(origenX+i-1, origenY)))})
     }
 	
 	method agregarParedY(alto,origenX,origenY){
-		alto.times({i => colisionables.add(new Pared(position = game.at(origenX,origenY+i-1)))})
+		alto.times({i => paredes.add(new Pared(position = game.at(origenX,origenY+i-1)))})
 	}
 	
 	
@@ -66,6 +67,8 @@ class Nivel {
 		//celdasCamion.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>colisionables.add(m)})
+		paredes.forEach({p=>game.addVisual(p)})
+		paredes.forEach({p=>colisionables.add(p)})
 	}
 	
 	method esPosicionDisponible(posicion) = !(config.nivelActual().colisionables()).any{ colisionable => colisionable.position() == posicion }
@@ -114,7 +117,7 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	
 	override method cargarNivel(){
 
-    	self.agregarBordes(22,16,-1,-1)
+    self.agregarBordes(22,16,-1,-1)
 	self.agregarParedY(10,1,3)
 	self.agregarParedY(10,10,3)
 	self.agregarParedY(2,6,9)

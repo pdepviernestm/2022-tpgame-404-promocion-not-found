@@ -100,8 +100,10 @@ method mover1(direccion) {
 	method colisiona() {
 		if (self.tieneItem() && self.itemActualEnfrente()) {
 			return false
-		} else return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
-	}
+		} else 	return self.obtenerPosEnfrente().allElements().any({ e => config.nivelActual().colisionables().contains(e)})
+	}	
+	//return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
+
 	
 	method agarrarPoder(powerUp)
 	{	
