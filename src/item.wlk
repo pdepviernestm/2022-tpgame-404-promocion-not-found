@@ -31,13 +31,13 @@ class Item {
 class Borde {
 
 	var property position
-    method image() = "sinImagen.png"
+    method image() = "numeros/sinImagen.png"
 }
 
 class Pared {
 
 	var property position
-    method image() = "sinImagen.png"
+    method image() = "numeros/sinImagen.png"
 }
 
 class PisoCamion {
