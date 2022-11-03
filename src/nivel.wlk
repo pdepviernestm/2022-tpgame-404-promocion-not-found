@@ -37,8 +37,12 @@ class Nivel {
 	}
 	
 	method crearCeldaCamion(x,y,image){
-    	celdasCamion.add(new PisoCamion (position = game.at(x,y),imagen = image))
-	} 
+    	celdasCamion.add(new PisoCamion(position = game.at(x,y)))
+	} // ,imagen = image
+	
+	method agregarCeldaCamion(alto,origenX,origenY){
+		alto.times({i => celdasCamion.add(new PisoCamion(position = game.at(origenX,origenY+i-1)))})
+	}
 	
 	method agregarColisionable(nuevoColisionable) {
 		colisionables.add(nuevoColisionable)
@@ -59,7 +63,7 @@ class Nivel {
 	}
 	
 	method cargarElementosNivel(){
-		celdasCamion.forEach({m=>game.addVisual(m)})
+		//celdasCamion.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>colisionables.add(m)})
 	}
@@ -110,11 +114,11 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	
 	override method cargarNivel(){
 
-    self.agregarBordes(22,16,-1,-1)
+    	self.agregarBordes(22,16,-1,-1)
 	self.agregarParedY(10,1,3)
 	self.agregarParedY(10,10,3)
 	self.agregarParedY(2,6,9)
-    self.agregarParedX(3,2,3)
+    	self.agregarParedX(3,2,3)
 	self.agregarParedX(3,7,3)
 	self.agregarParedX(8,2,11)
 	self.agregarParedX(8,2,12)
@@ -124,10 +128,15 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.crearMueble(4,6,"silla_izquierda.png")
 	self.crearMueble(3,7,"silla_abajo.png")
 	self.crearMueble(3,5,"silla_arriba.png")
-    self.crearMueble(3,6,"mesa.png")
+    	self.crearMueble(3,6,"mesa.png")
 	self.agregarParedX(3,16,12) // pared del camion
 	self.agregarParedX(3,16,3) // pared del camion
 	self.agregarParedY(8,19,4) // pared del camion
+	self.agregarCeldaCamion(8,16,4)
+	self.agregarCeldaCamion(8,17,4)
+	self.agregarCeldaCamion(8,18,4)
+	
+	
 	
 	self.crearPowerUps()
 	
