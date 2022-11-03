@@ -43,9 +43,9 @@ class PisoCamion {
 
 	var property position = game.center()
 	
-	var property imagen
+	//var property imagen
 	
-	method image() = imagen
+	//method image() = imagen
 
 }
 
