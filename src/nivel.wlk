@@ -64,22 +64,22 @@ class Nivel {
 		muebles.forEach({m=>colisionables.add(m)})
 	}
 	
-	method esPosicionLegal(posicion) = !(config.nivelActual().colisionables().map{c => c.position()}).contains(posicion)
+	method esPosicionDisponible(posicion) = !(config.nivelActual().colisionables()).any{ colisionable => colisionable.position() == posicion }
 	
-	method generarPosicionLegal()
+	method generarPosicionDisponible()
 	{
-		const posicionX = 0.randomUpTo(config.ancho())
-		const posicionY = 0.randomUpTo(config.alto())
+		const posicionX = 0.randomUpTo(config.ancho()).roundUp()
+		const posicionY = 0.randomUpTo(config.alto()).roundUp()
 		
-		if(self.esPosicionLegal(game.at(posicionX, posicionY)))
+		if(self.esPosicionDisponible(game.at(posicionX, posicionY)))
 		{
 			return game.at(posicionX, posicionY)
 		}
-		else return self.generarPosicionLegal()
+		else return self.generarPosicionDisponible()
 	}
 	
 	method crearPowerUps(){
-		const powerUp = new VelocidadPower(position = self.generarPosicionLegal())
+		const powerUp = new VelocidadPower(position = self.generarPosicionDisponible())
 		game.addVisual(powerUp)
 	}
 }
