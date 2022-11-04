@@ -1,4 +1,5 @@
 import wollok.game.*
+import config.*
 
 class PowerUp {
 	var property position
@@ -17,8 +18,11 @@ class VelocidadPower inherits PowerUp
 	override method darPoder(jugador){
 		jugador.vaRapido(true)
 		super(jugador)
+		config.nivelActual().powerUps().remove(self)
 		game.schedule(7000, {=> jugador.vaRapido(false)})
 	}
-	
+	method quitarPoder(jugador){
+		jugador.vaRapido(false)
+	}
 }
 

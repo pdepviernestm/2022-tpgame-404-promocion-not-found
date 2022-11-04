@@ -87,6 +87,7 @@ class Nivel {
 	
 	method cargarSiguiente(nivel) {
 		self.eliminarElementosNivel()
+		jugador.reiniciarPowerUp()
 		nivelSiguiente.ejecutar()
 	}
 	
@@ -106,6 +107,11 @@ class Nivel {
 	
 	method crearPowerUp(){
 		powerUps.add(new VelocidadPower(position = self.generarPosicionDisponible()))
+	}
+	
+	method timeOver(){
+		self.eliminarElementosNivel()
+		game.addVisual(gameOver)
 	}
 }
 
@@ -215,4 +221,9 @@ object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
 object fondo2 {
 	const property position=game.at(-1,-1)
 	const property image="nivel_2.png"
+}
+
+object gameOver {
+	const property position=game.origin()
+	const property image="reintentar_nivel.png"
 }

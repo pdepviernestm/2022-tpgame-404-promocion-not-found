@@ -38,39 +38,32 @@ object jugador {
 		direccionActual = direccion
 	}
 	
-	method avanzar(direccion)
-	{
-		if(self.vaRapido()){
-			position = direccion.posSiguiente(position)
-			position = direccion.posSiguiente(position)
-		}
-		else position = direccion.posSiguiente(position)
-	}
+	method mover(direccion){
+    	if(vaRapido){
+    		self.moverAumentado(direccion)
+    	}
+    	else self.moverNormal(direccion)
+    }
 
-	method mover(direccion) {
+	method moverNormal(direccion) {
 		self.setearDireccion(direccion)
 		if (!self.colisiona()) {
 			if (!self.tieneItem())
-			    self.avanzar(direccion)
+			    position = direccion.posSiguiente(position)
 			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) {
-			    self.avanzar(direccion)
+			    position = direccion.posSiguiente(position)
 				itemActual.serLlevado(self)}
 			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual){
 			        self.soltarItem()
-			        self.avanzar(direccion)}
+			        position = direccion.posSiguiente(position)}
 		}
 	}
+    
+    method moverAumentado(direccion){
+    	self.moverNormal(direccion)
+    	self.moverNormal(direccion)
+    }
 
-method mover1(direccion) {
-		self.setearDireccion(direccion)
-		if (!self.colisiona()) {
-			position = direccion.posSiguiente(position)
-			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) 
-				itemActual.serLlevado(self)
-			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual)
-			        self.soltarItem()
-		}
-	}
 
 	method tieneItem() = itemActual != null
 
@@ -120,5 +113,9 @@ method mover1(direccion) {
 		powerUpActual.darPoder(self)
 	}
 
+	method reiniciarPowerUp(){
+		powerUpActual.quitarPoder(self)
+	}
+	
 }
 
