@@ -189,10 +189,14 @@ object nivel2 inherits Nivel (nivelSiguiente=fin){
 	self.agregarParedY(3,13,5)
 	self.agregarParedY(3,16,5)
 	self.agregarParedY(7,17,7)
-	self.crearMueble(7,10,"mesa.png")
+	self.crearMueble(7,9,"mesa.png")
+	self.crearMueble(6,8,"sillon.png")
+	self.crearMueble(6,11,"televisor.png")
+	self.crearMueble(7,11,"biblioteca.png")
 	self.crearMueble(10,11,"heladera.png")
 	self.crearMueble(16,8,"silla_izquierda.png")
 	self.crearMueble(16,9,"silla_izquierda.png")
+	//self.crearMuebele()
 	self.crearMueble(14,10,"caja.png")
 	
 	
