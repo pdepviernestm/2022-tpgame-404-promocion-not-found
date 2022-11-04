@@ -215,6 +215,10 @@ object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
     timer.empezar()
 	}
 	
+	override method eliminarElementosNivel(){
+		super()
+		game.removeVisual(fondo2)
+	}
 }
 
 object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
