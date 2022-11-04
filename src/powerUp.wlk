@@ -17,6 +17,8 @@ class VelocidadPower inherits PowerUp
 	override method darPoder(jugador){
 		jugador.vaRapido(true)
 		super(jugador)
+		game.schedule(7000, {=> jugador.vaRapido(false)})
 	}
+	
 }
 

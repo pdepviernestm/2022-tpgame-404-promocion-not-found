@@ -37,18 +37,27 @@ object jugador {
 	method setearDireccion(direccion) {
 		direccionActual = direccion
 	}
+	
+	method avanzar(direccion)
+	{
+		if(self.vaRapido()){
+			position = direccion.posSiguiente(position)
+			position = direccion.posSiguiente(position)
+		}
+		else position = direccion.posSiguiente(position)
+	}
 
 	method mover(direccion) {
 		self.setearDireccion(direccion)
 		if (!self.colisiona()) {
 			if (!self.tieneItem())
-			    position = direccion.posSiguiente(position)
+			    self.avanzar(direccion)
 			if (self.tieneItem() && itemActual.puedeSerLlevado(self)) {
-			    position = direccion.posSiguiente(position)
+			    self.avanzar(direccion)
 				itemActual.serLlevado(self)}
 			else if (self.tieneItem() && !itemActual.puedeSerLlevado(self)&& direccionAgarre!=direccionActual){
 			        self.soltarItem()
-			        position = direccion.posSiguiente(position)}
+			        self.avanzar(direccion)}
 		}
 	}
 
