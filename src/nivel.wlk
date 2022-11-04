@@ -71,9 +71,14 @@ class Nivel {
 		muebles.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>colisionables.add(m)})
 		paredes.forEach({p=>game.addVisual(p)})
-		paredes.forEach({p=>colisionables.add(p)})
+		paredes.forEach({p=>colisionables.add(p)})		
+
+	}
+	
+	method cargarPowerUps(){
 		powerUps.forEach({pU=>game.addVisual(pU)})
 	}
+	
 	method eliminarElementosNivel() {
 		const elementosNivel=[colisionables,powerUps].flatten()
 		elementosNivel.forEach{ e => game.removeVisual(e)}
@@ -95,8 +100,8 @@ class Nivel {
 	
 	method generarPosicionDisponible()
 	{
-		const posicionX = 0.randomUpTo(config.ancho()).roundUp()
-		const posicionY = 0.randomUpTo(config.alto()).roundUp()
+		const posicionX = 0.randomUpTo(config.ancho()-1).roundUp()
+		const posicionY = 0.randomUpTo(config.alto()-1).roundUp()
 		
 		if(self.esPosicionDisponible(game.at(posicionX, posicionY)))
 		{
@@ -163,9 +168,10 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=50){
 	self.agregarCeldaCamion(8,17,4)
 	self.agregarCeldaCamion(8,18,4)
 	
-	self.crearPowerUp()
-	
     self.cargarElementosNivel()
+    self.crearPowerUp()
+	self.crearPowerUp()
+    self.cargarPowerUps()
     game.addVisual(jugador)
     game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)
