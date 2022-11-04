@@ -164,6 +164,8 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=60){
     jugador.ubicarInicio(15,3)
 	digitosReloj.generarDigitos(tiempoNivel, game.at(7,12))
     timer.empezar()
+    
+    game.onCollideDo(jugador, {powerUp => jugador.agarrarPoder(powerUp)})
 	}
 }
 

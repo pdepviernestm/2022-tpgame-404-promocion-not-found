@@ -7,7 +7,7 @@ import config.*
 object jugador {
 
 	var property position = game.origin()
-	var property velocidad = 100
+	var property vaRapido = false
 	var powerUpActual
 	var property direccionActual = arriba
 	var property direccionAgarre
