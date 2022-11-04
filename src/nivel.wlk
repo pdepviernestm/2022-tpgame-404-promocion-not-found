@@ -9,6 +9,7 @@ class Nivel {
 	const property muebles=[]
 	const property celdasCamion=[]
 	const property paredes=[]
+	const property powerUps=[]
 	var property nivelSiguiente
 	
 	
@@ -55,8 +56,9 @@ class Nivel {
 
 	method ganar() {
 		if (self.todosLosMueblesEstanEnCamion()) {
-			game.say(jugador, "¡GANASTE! :)")
-			game.schedule(2000, { game.stop()})
+			game.say(jugador, "¡BIEN HECHO! :)")
+			game.onTick(2000, "espera", {self.cargarSiguiente(nivelSiguiente)
+				                         game.removeTickEvent("espera")})
 		}
 	}
 	method cargarNivel() {
@@ -64,11 +66,26 @@ class Nivel {
 	}
 	
 	method cargarElementosNivel(){
-		//celdasCamion.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>game.addVisual(m)})
 		muebles.forEach({m=>colisionables.add(m)})
 		paredes.forEach({p=>game.addVisual(p)})
 		paredes.forEach({p=>colisionables.add(p)})
+		powerUps.forEach({pU=>game.addVisual(pU)})
+	}
+	method eliminarElementosNivel() {
+		const elementosNivel=[colisionables,powerUps].flatten()
+		elementosNivel.forEach{ e => game.removeVisual(e)}
+		colisionables.clear()
+		muebles.clear()
+		celdasCamion.clear()
+		paredes.clear()
+		powerUps.clear()
+		game.removeVisual(jugador)
+	}
+	
+	method cargarSiguiente(nivel) {
+		self.eliminarElementosNivel()
+		nivelSiguiente.ejecutar()
 	}
 	
 	method esPosicionDisponible(posicion) = !(config.nivelActual().colisionables()).any{ colisionable => colisionable.position() == posicion }
@@ -85,15 +102,14 @@ class Nivel {
 		else return self.generarPosicionDisponible()
 	}
 	
-	method crearPowerUps(){
-		const powerUp = new VelocidadPower(position = self.generarPosicionDisponible())
-		game.addVisual(powerUp)
+	method crearPowerUp(){
+		powerUps.add(new VelocidadPower(position = self.generarPosicionDisponible()))
 	}
 }
 
 object menu inherits Nivel(nivelSiguiente=nivel1){
 
-	method image() = "menu.png"
+	method image() = "prototipo_menu.png"
 
 	method position() = game.origin()
 
@@ -113,7 +129,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=fin){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2){
 	
 	override method cargarNivel(){
 
@@ -121,17 +137,16 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.agregarParedY(10,1,3)
 	self.agregarParedY(10,10,3)
 	self.agregarParedY(2,6,9)
-    	self.agregarParedX(3,2,3)
+    self.agregarParedX(3,2,3)
 	self.agregarParedX(3,7,3)
 	self.agregarParedX(8,2,11)
 	self.agregarParedX(8,2,12)
-	//self.crearMueble(5,7,"caja.png")
-	self.crearMueble(8,10,"caja.png")
+	/*self.crearMueble(8,10,"caja.png")
 	self.crearMueble(2,6,"silla_derecha.png")
 	self.crearMueble(4,6,"silla_izquierda.png")
 	self.crearMueble(3,7,"silla_abajo.png")
-	self.crearMueble(3,5,"silla_arriba.png")
-    	self.crearMueble(3,6,"mesa.png")
+	self.crearMueble(3,5,"silla_arriba.png")*/
+    self.crearMueble(3,6,"mesa.png")
 	self.agregarParedX(3,16,12) // pared del camion
 	self.agregarParedX(3,16,3) // pared del camion
 	self.agregarParedY(8,19,4) // pared del camion
@@ -139,19 +154,8 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	self.agregarCeldaCamion(8,17,4)
 	self.agregarCeldaCamion(8,18,4)
 	
+	self.crearPowerUp()
 	
-	
-	self.crearPowerUps()
-	
- 	/*const pisoCamion_1 = new PisoCamion (position = game.at(0,2),imagen = "camionAtras.png")
-    const pisoCamion_2 = new PisoCamion (position = game.at(0,1),imagen = "camionFrente.png")
-	*/
-	
-	
-    	/* 
-    self.crearCeldaCamion(0,2)	
-    self.crearCeldaCamion(0,1)	
-    	*/
     self.cargarElementosNivel()
     game.addVisual(jugador)
     game.showAttributes(jugador)
@@ -160,6 +164,26 @@ object nivel1 inherits Nivel(nivelSiguiente=fin){
 	}
 }
 
+object nivel2 inherits Nivel (nivelSiguiente=fin){
+	
+
+	override method cargarNivel(){
+	game.addVisual(fondo2)
+	self.agregarBordes(22,16,-1,-1)
+	
+	
+	self.cargarElementosNivel()
+	game.addVisual(jugador)
+    jugador.ubicarInicio(15,3)
+	}
+	
+}
+
 object fin inherits Nivel (nivelSiguiente=null){
 	
+}
+
+object fondo2 {
+	const property position=game.at(-1,-1)
+	const property image="nivel_2.png"
 }
