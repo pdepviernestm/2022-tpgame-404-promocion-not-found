@@ -69,13 +69,15 @@ object jugador {
 
 	method agarrarItem() {
 		if (!self.tieneItem() && self.hayItemEnfrente()) {
+			game.sound("sonidos/agarrar.mp3").play()
 			itemActual = self.obtenerItemEnfrente()
 			direccionAgarre = direccionActual
-		}
+		} else game.sound("sonidos/agarrar_fail.mp3").play()
 	}
 
 	method soltarItem() {
 		if (self.tieneItem()) {
+			game.sound("sonidos/soltar.mp3").play()
 			itemActual = null
 			direccionAgarre = null
 			config.nivelActual().ganar()
