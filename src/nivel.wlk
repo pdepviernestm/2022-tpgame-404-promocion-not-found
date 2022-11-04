@@ -87,7 +87,7 @@ class Nivel {
 	
 	method cargarSiguiente(nivel) {
 		self.eliminarElementosNivel()
-		jugador.reiniciarPowerUp()
+		//jugador.reiniciarPowerUp()
 		nivelSiguiente.ejecutar()
 	}
 	
@@ -111,7 +111,9 @@ class Nivel {
 	
 	method timeOver(){
 		self.eliminarElementosNivel()
-		game.addVisual(gameOver)
+		gameOver.nivelSiguiente(self)
+		config.nivelActual(gameOver)
+		gameOver.ejecutar()
 	}
 }
 
@@ -132,12 +134,11 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 		}
 	}
 
-
 }
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=60){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=50){
 	
 	override method cargarNivel(){
 
@@ -168,14 +169,14 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=60){
     game.addVisual(jugador)
     game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)
-	digitosReloj.generarDigitos(tiempoNivel, game.at(7,12))
+	digitosReloj.generarDigitos(tiempoNivel, game.origin())
     timer.empezar()
     
     game.onCollideDo(jugador, {powerUp => jugador.agarrarPoder(powerUp)})
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=90){
+object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 	
 
 	override method cargarNivel(){
@@ -210,6 +211,8 @@ object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=90){
 	game.addVisual(jugador)
 	game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)
+    digitosReloj.generarDigitos(tiempoNivel, game.origin())
+    timer.empezar()
 	}
 	
 }
@@ -223,7 +226,18 @@ object fondo2 {
 	const property image="nivel_2.png"
 }
 
-object gameOver {
+object gameOver inherits Nivel(nivelSiguiente=null,tiempoNivel=0){
 	const property position=game.origin()
 	const property image="reintentar_nivel.png"
+	
+	override method ejecutar() {
+		game.addVisual(self)
+	}
+	
+	method empezarJuego() {
+		if (config.nivelActual() == self) {
+			game.removeVisual(self)
+			nivelSiguiente.ejecutar()
+		}
+	}
 }

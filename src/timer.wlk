@@ -1,5 +1,6 @@
 import wollok.game.*
 import config.*
+import nivel.*
 
 class Timer{
 	var property tiempoTotal //en segundos
@@ -24,7 +25,7 @@ class Timer{
 	method correrTemporizador() {
 		if(tiempoRestante<=0){
 			self.stop()
-			//accion nivel
+			config.nivelActual().timeOver()
 		}
 		
 		self.setTiempoRestanteContador()

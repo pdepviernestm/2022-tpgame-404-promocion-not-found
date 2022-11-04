@@ -114,6 +114,7 @@ object jugador {
 	}
 
 	method reiniciarPowerUp(){
+		if(!powerUpActual)
 		powerUpActual.quitarPoder(self)
 	}
 	
