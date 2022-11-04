@@ -3,6 +3,7 @@ import item.*
 import jugador.*
 import powerUp.*
 import config.*
+import timer.*
 
 class Nivel {
 	const property colisionables=[]
@@ -10,6 +11,7 @@ class Nivel {
 	const property celdasCamion=[]
 	const property paredes=[]
 	const property powerUps=[]
+    var property tiempoNivel
 	var property nivelSiguiente
 	
 	
@@ -107,7 +109,7 @@ class Nivel {
 	}
 }
 
-object menu inherits Nivel(nivelSiguiente=nivel1){
+object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 
 	method image() = "prototipo_menu.png"
 
@@ -129,7 +131,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=60){
 	
 	override method cargarNivel(){
 
@@ -160,26 +162,51 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2){
     game.addVisual(jugador)
     game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)
-	
+	digitosReloj.generarDigitos(tiempoNivel, game.at(7,12))
+    timer.empezar()
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=fin){
+object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=90){
 	
 
 	override method cargarNivel(){
 	game.addVisual(fondo2)
 	self.agregarBordes(22,16,-1,-1)
-	
+	self.agregarCeldaCamion(8,0,4)
+	self.agregarCeldaCamion(8,1,4)
+	self.agregarCeldaCamion(8,2,4)
+	//paredes camion
+	self.agregarParedX(3,0,3)
+	self.agregarParedX(3,0,12)
+	//no agrego Y porque es borde de mapa
+	//paredes casa
+	self.agregarParedY(7,5,7)
+	self.agregarParedX(13,5,13)
+	self.agregarParedX(13,5,14)
+	self.agregarParedX(13,5,12)
+	self.agregarParedY(2,9,10)
+	self.agregarParedX(9,5,7)
+	self.agregarParedX(4,7,6)
+	self.agregarParedX(4,7,5)
+	self.agregarParedY(3,13,5)
+	self.agregarParedY(3,16,5)
+	self.agregarParedY(7,17,7)
+	self.crearMueble(7,10,"mesa.png")
+	self.crearMueble(10,11,"heladera.png")
+	self.crearMueble(16,8,"silla_izquierda.png")
+	self.crearMueble(16,9,"silla_izquierda.png")
+	self.crearMueble(14,10,"caja.png")
 	
 	self.cargarElementosNivel()
 	game.addVisual(jugador)
+	game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)
 	}
 	
 }
 
-object fin inherits Nivel (nivelSiguiente=null){
+object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
 	
 }
 

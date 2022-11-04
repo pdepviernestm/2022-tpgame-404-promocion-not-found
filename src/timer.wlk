@@ -62,7 +62,7 @@ class Digito {
 	method digito(){
 		const numeroString = timer.tiempoRestante().toString()
 		return if (numeroString.size() - 1 < posicionDigito)
-			"sinNumero"
+			"sinImagen"
 		else
 			numeroString.charAt(posicionDigito)
 	}
