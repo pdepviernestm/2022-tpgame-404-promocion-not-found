@@ -58,11 +58,14 @@ class Nivel {
 
 	method ganar() {
 		if (self.todosLosMueblesEstanEnCamion()) {
+			timer.stop()
 			game.say(jugador, "¡BIEN HECHO! :)")
 			game.onTick(2000, "espera", {self.cargarSiguiente(nivelSiguiente)
 				                         game.removeTickEvent("espera")})
 		}
 	}
+
+
 	method cargarNivel() {
 		
 	}
@@ -92,8 +95,8 @@ class Nivel {
 	
 	method cargarSiguiente(nivel) {
 		self.eliminarElementosNivel()
-		//jugador.reiniciarPowerUp()
-		nivelSiguiente.ejecutar()
+        jugador.reiniciarPowerUp()		
+        nivelSiguiente.ejecutar()
 	}
 	
 	method esPosicionDisponible(posicion) = !(config.nivelActual().colisionables()).any{ colisionable => colisionable.position() == posicion }
@@ -114,8 +117,14 @@ class Nivel {
 		powerUps.add(new VelocidadPower(position = self.generarPosicionDisponible()))
 	}
 	
+	method reiniciarJugador(){
+		jugador.reiniciarItem()
+		jugador.reiniciarPowerUp()
+	}
+	
 	method timeOver(){
 		self.eliminarElementosNivel()
+        self.reiniciarJugador()
 		gameOver.nivelSiguiente(self)
 		config.nivelActual(gameOver)
 		gameOver.ejecutar()
@@ -143,7 +152,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=50){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=10){
 	
 	override method cargarNivel(){
 
@@ -182,7 +191,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=50){
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
+object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=10){
 	
 
 	override method cargarNivel(){
@@ -207,13 +216,16 @@ object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 	self.agregarParedY(3,13,5)
 	self.agregarParedY(3,16,5)
 	self.agregarParedY(7,17,7)
-	self.crearMueble(7,10,"mesa.png")
+	/*self.crearMueble(7,10,"mesa.png")
 	self.crearMueble(10,11,"heladera.png")
 	self.crearMueble(16,8,"silla_izquierda.png")
-	self.crearMueble(16,9,"silla_izquierda.png")
+	self.crearMueble(16,9,"silla_izquierda.png")*/
 	self.crearMueble(14,10,"caja.png")
-	
 	self.cargarElementosNivel()
+	
+	self.crearPowerUp()
+    self.cargarPowerUps()
+    
 	game.addVisual(jugador)
 	game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)

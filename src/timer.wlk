@@ -15,11 +15,8 @@ class Timer{
     method empezar(){
     	tiempoTotal=config.nivelActual().tiempoNivel()
     	tiempoRestante=tiempoTotal
-    	//game.addVisual(reloj)
 		game.onTick(1000,"Empezar temporizador",{self.correrTemporizador()})
-	    
-	//onTick(milliseconds, name, action)
-	//schedule(milliseconds, action)
+
     }
 	
 	method correrTemporizador() {
@@ -27,31 +24,16 @@ class Timer{
 			self.stop()
 			config.nivelActual().timeOver()
 		}
-		
 		self.setTiempoRestanteContador()
-		//reloj.mostrarTiempoRestante()
 	}
 	
 	method stop(){
 		game.removeTickEvent("Empezar temporizador")
 	}
-	
 }
-
 
 object timer inherits Timer(tiempoTotal=60){
-	
 }
-
-/*object reloj{
-	var property position= game.origin()
-	const property image="reloj.png"
-	//var property segundosRestantes
-	method mostrarTiempoRestante(){
-		game.say(self,timer.tiempoRestante().toString())
-	}
-}
-*/
 
 
 class Digito {
@@ -68,7 +50,6 @@ class Digito {
 			numeroString.charAt(posicionDigito)
 	}
 	method image() = "numeros/"+self.digito()+".png"
-
 }
 
 
@@ -78,4 +59,3 @@ object digitosReloj{
 		cantidadDigitos.times({i=>game.addVisual(new Digito(posicionDigito=i-1,posicionBase=posicion))})
 	}
 }
-

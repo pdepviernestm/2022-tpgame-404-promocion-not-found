@@ -20,10 +20,11 @@ class VelocidadPower inherits PowerUp
 		super(jugador)
 		jugador.vaRapido(true)
 		config.nivelActual().powerUps().remove(self)
-		game.schedule(7000, {=> jugador.vaRapido(false)})
+		game.schedule(7000, {=> self.quitarPoder(jugador)})
 	}
 	method quitarPoder(jugador){
 		jugador.vaRapido(false)
+		jugador.powerUpActual(null)
 	}
 }
 

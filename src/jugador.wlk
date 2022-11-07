@@ -8,7 +8,7 @@ object jugador {
 
 	var property position = game.origin()
 	var property vaRapido = false
-	var powerUpActual
+	var property powerUpActual
 	var property direccionActual = arriba
 	var property direccionAgarre
 	var property itemActual
@@ -83,6 +83,12 @@ object jugador {
 			config.nivelActual().ganar()
 		}
 	}
+	method reiniciarItem(){
+		if (self.tieneItem()) {
+			itemActual = null
+			direccionAgarre = null
+		}
+	}
 
 	method obtenerPosEnfrente() {
 		return direccionActual.posSiguiente(position)
@@ -111,12 +117,13 @@ object jugador {
 	
 	method agarrarPoder(powerUp)
 	{	
+		self.reiniciarPowerUp()
 		powerUpActual = powerUp
 		powerUpActual.darPoder(self)
 	}
 
 	method reiniciarPowerUp(){
-		if(!powerUpActual)
+		if(powerUpActual!=null)
 		powerUpActual.quitarPoder(self)
 	}
 	
