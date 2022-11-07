@@ -9,18 +9,21 @@ class Item {
 
 	var property image
 	
+	var property estaSiendoCargado = false
+	
 	var property pesado
 
 	method puedeSerLlevado(unJugador) {
-		return !self.colisiona(unJugador.direccionActual())
+		return !self.colisiona(unJugador.direccionActual(),unJugador) 
 	}
 
 	method serLlevado(unJugador) {
 		position = unJugador.direccionAgarre().posSiguiente(unJugador.position())
 	}
 
-	method colisiona(direccion){
+	method colisiona(direccion, unJugador){
 	return game.getObjectsIn(direccion.posSiguiente(position)).any({ e => config.nivelActual().colisionables().contains(e)})
+	       || config.jugadorContrario(unJugador).position() == direccion.posSiguiente(position)
 	} 
 	//return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == direccion.posSiguiente(position) }
 

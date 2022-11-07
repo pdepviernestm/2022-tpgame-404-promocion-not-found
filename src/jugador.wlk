@@ -6,7 +6,7 @@ import config.*
 
 class Jugador{
 	const property nombre
-	var property position = game.origin()
+	var property position = game.at(-1,-1)
 	var property vaRapido = false
 	var property powerUpActual=null
 	var property direccionActual = arriba
@@ -63,9 +63,10 @@ class Jugador{
     method tieneHerramienta() = herramientaActual != null
     
 	method agarrarItem() {
-		if (!self.tieneItem() && self.hayItemEnfrente()) {
+		if (!self.tieneItem() && self.hayItemEnfrente() && !self.obtenerItemEnfrente().estaSiendoCargado()) {
 			game.sound("sonidos/agarrar.mp3").play()
 			itemActual = self.obtenerItemEnfrente()
+			itemActual.estaSiendoCargado(true)
 			direccionAgarre = direccionActual
 		} else game.sound("sonidos/agarrar_fail.mp3").play()
 	}
@@ -73,6 +74,7 @@ class Jugador{
 	method soltarItem() {
 		if (self.tieneItem()) {
 			game.sound("sonidos/soltar.mp3").play()
+			itemActual.estaSiendoCargado(false)
 			itemActual = null
 			direccionAgarre = null
 			config.nivelActual().ganar()
@@ -104,11 +106,11 @@ class Jugador{
 
 	method colisiona() {
 		if (self.tieneItem() && self.itemActualEnfrente()) {
-			return false
-		} else 	return self.obtenerPosEnfrente().allElements().any({ e => config.nivelActual().colisionables().contains(e)})
+			return false 
+		} else 	return self.obtenerPosEnfrente().allElements().any({ e => config.nivelActual().colisionables().contains(e)
+			                                                              || config.jugadores().contains(e)	})
 	}	
 	//return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
-
 	
 	method agarrarPoder(powerUp)
 	{	
@@ -121,6 +123,7 @@ class Jugador{
 		if(powerUpActual!=null)
 		powerUpActual.quitarPoder(self)
 	}
+	
 	
 }
 

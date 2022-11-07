@@ -10,6 +10,7 @@ object config {
 	const property celdas = 50
 	var property nivelActual = menu
 	var property dosJugadores = false
+	const property jugadores = [jugador,jugador2]
 	
 	method teclasJugador() {
 		keyboard.up().onPressDo{ jugador.mover(arriba)}
@@ -31,6 +32,11 @@ object config {
 	
 	method nivelActual(unNivel){
 		nivelActual=unNivel
+	}
+	
+	method jugadorContrario(unJugador){
+		 if (unJugador.nombre()=="jugador_") return jugador2
+		 else return jugador
 	}
 }
 
