@@ -227,6 +227,12 @@ object nivel2 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 	}
 }
 
+object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
+	override method cargarNivel(){
+		game.addVisual(fondo3)
+	}
+}
+
 object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
 	
 }
@@ -234,6 +240,11 @@ object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
 object fondo2 {
 	const property position=game.at(-1,-1)
 	const property image="nivel_2.png"
+}
+
+object fondo3 {
+	const property position=game.at(-1,-1)
+	const property image="nivel_3.png"
 }
 
 object gameOver inherits Nivel(nivelSiguiente=null,tiempoNivel=0){
