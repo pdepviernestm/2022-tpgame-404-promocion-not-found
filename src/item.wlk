@@ -11,12 +11,12 @@ class Item {
 	
 	var property pesado
 
-	method puedeSerLlevado(jugador) {
-		return !self.colisiona(jugador.direccionActual())
+	method puedeSerLlevado(unJugador) {
+		return !self.colisiona(unJugador.direccionActual())
 	}
 
-	method serLlevado(jugador) {
-		position = jugador.direccionAgarre().posSiguiente(jugador.position())
+	method serLlevado(unJugador) {
+		position = unJugador.direccionAgarre().posSiguiente(unJugador.position())
 	}
 
 	method colisiona(direccion){

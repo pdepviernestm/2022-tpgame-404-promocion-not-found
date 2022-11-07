@@ -68,7 +68,6 @@ class Nivel {
 
 
 	method cargarNivel() {
-		
 	}
 	
 	method cargarElementosNivel(){
@@ -87,6 +86,29 @@ class Nivel {
 		herramientas.forEach({h=>game.addVisual(h)})
 	}
 	
+	
+	method agregarJugador1(x,y){
+		game.addVisual(jugador)
+        game.showAttributes(jugador)
+        jugador.ubicarInicio(x,y)
+        game.onCollideDo(jugador, {powerUp => jugador.agarrarPoder(powerUp)})
+	}
+
+    method agregarJugador2(x,y){
+    	if(config.dosJugadores()){
+    		game.addVisual(jugador2)
+            game.showAttributes(jugador2)
+            jugador2.ubicarInicio(x,y)
+            game.onCollideDo(jugador2, {powerUp => jugador2.agarrarPoder(powerUp)})
+		}
+    }	
+	method eliminarJugadores(){
+		if(config.dosJugadores()){
+			game.removeVisual(jugador)
+			game.removeVisual(jugador2)
+		}else game.removeVisual(jugador)
+	}
+	
 	method eliminarElementosNivel() {
 		const elementosNivel=[colisionables,powerUps].flatten()
 		elementosNivel.forEach{ e => game.removeVisual(e)}
@@ -95,12 +117,13 @@ class Nivel {
 		celdasCamion.clear()
 		paredes.clear()
 		powerUps.clear()
-		game.removeVisual(jugador)
+		//game.removeVisual(jugador)
+		self.eliminarJugadores()
 	}
 	
 	method cargarSiguiente(nivel) {
 		self.eliminarElementosNivel()
-        jugador.reiniciarPowerUp()		
+        self.reiniciarJugadores()
         nivelSiguiente.ejecutar()
 	}
 	
@@ -122,14 +145,18 @@ class Nivel {
 		powerUps.add(new VelocidadPower(position = self.generarPosicionDisponible()))
 	}
 	
-	method reiniciarJugador(){
+	method reiniciarJugadores(){
 		jugador.reiniciarItem()
 		jugador.reiniciarPowerUp()
+		if(config.dosJugadores()){
+		jugador2.reiniciarItem()
+		jugador2.reiniciarPowerUp()
+		}
 	}
 	
 	method timeOver(){
 		self.eliminarElementosNivel()
-        self.reiniciarJugador()
+        self.reiniciarJugadores()
 		gameOver.nivelSiguiente(self)
 		config.nivelActual(gameOver)
 		gameOver.ejecutar()
@@ -145,7 +172,19 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	override method ejecutar() {
 		game.addVisual(self)
 	}
-
+    
+    method elegirUnJugador() {
+		if (config.nivelActual() == self) {
+			config.dosJugadores(false)
+		}
+	}
+	
+    method elegirDosJugadores() {
+		if (config.nivelActual() == self) {
+			config.dosJugadores(true)
+		}
+	}
+    
 	method empezarJuego() {
 		if (config.nivelActual() == self) {
 			game.removeVisual(self)
@@ -186,13 +225,13 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=10){
     self.crearPowerUp()
 	self.crearPowerUp()
     self.cargarPowerUps()
-    game.addVisual(jugador)
+    /*game.addVisual(jugador)
     game.showAttributes(jugador)
-    jugador.ubicarInicio(15,3)
+    jugador.ubicarInicio(15,3)*/
+    self.agregarJugador1(15,3)
+    self.agregarJugador2(13,3)
 	digitosReloj.generarDigitos(tiempoNivel, game.origin())
     timer.empezar()
-    
-    game.onCollideDo(jugador, {powerUp => jugador.agarrarPoder(powerUp)})
 	}
 }
 
@@ -231,9 +270,12 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=10){
 	self.crearPowerUp()
     self.cargarPowerUps()
     
-	game.addVisual(jugador)
+	/*game.addVisual(jugador)
 	game.showAttributes(jugador)
-    jugador.ubicarInicio(15,3)
+    jugador.ubicarInicio(15,3)*/
+    self.agregarJugador1(15,3)
+    self.agregarJugador2(13,3)
+    
     digitosReloj.generarDigitos(tiempoNivel, game.origin())
     timer.empezar()
 	}
@@ -247,6 +289,8 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=10){
 object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 	override method cargarNivel(){
 		game.addVisual(fondo3)
+		self.agregarJugador1(15,3)
+   		self.agregarJugador2(13,3)
 	}
 }
 

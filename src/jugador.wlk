@@ -4,31 +4,23 @@ import powerUp.*
 import nivel.*
 import config.*
 
-object jugador {
-
+class Jugador{
+	const property nombre
 	var property position = game.origin()
 	var property vaRapido = false
-	var property powerUpActual
+	var property powerUpActual=null
 	var property direccionActual = arriba
 	var property direccionAgarre
-	var property itemActual
+	var property itemActual	
 	var property herramientaActual
 
 	method image() {
 		if (!self.tieneItem()) {
-			return "jugador_" + direccionActual.toString() + ".png"
-		} else return "jugador_" + direccionAgarre.toString() + ".png"
+			return nombre + direccionActual.toString() + ".png"
+		} else return nombre + direccionAgarre.toString() + ".png"
 	}
 	
-	/*  Si el string que devuelve imagen es "jugador_direccion[].png"
-	method image() {
-		if (!self.tieneItem()) {
-			return "jugador_" + direccionActual.toString().reverse().drop(2).reverse() + ".png"
-		} else return "jugador_" + direccionAgarre.toString().reverse().drop(2).reverse() + ".png"
-	}
-	
-	*/
-    method ubicarInicio(x,y){
+	   method ubicarInicio(x,y){
 		position = game.at(x, y)
 		direccionActual = abajo
 	}
@@ -67,8 +59,9 @@ object jugador {
 
 
 	method tieneItem() = itemActual != null
-	method tieneHerramienta() = herramientaActual != null
-
+    
+    method tieneHerramienta() = herramientaActual != null
+    
 	method agarrarItem() {
 		if (!self.tieneItem() && self.hayItemEnfrente()) {
 			game.sound("sonidos/agarrar.mp3").play()
@@ -131,3 +124,10 @@ object jugador {
 	
 }
 
+object jugador inherits Jugador(nombre="jugador_"){
+
+}
+
+object jugador2 inherits Jugador(nombre="jugador2_"){
+	
+}
