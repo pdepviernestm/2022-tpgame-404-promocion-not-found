@@ -11,6 +11,7 @@ class Nivel {
 	const property celdasCamion=[]
 	const property paredes=[]
 	const property powerUps=[]
+	const property herramientas=[]
     var property tiempoNivel
 	var property nivelSiguiente
 	
@@ -36,8 +37,8 @@ class Nivel {
 	}
 	
 	
-	method crearMueble(x,y,imagen){
-		muebles.add(new Item(position = game.at(x,y),image= imagen))
+	method crearMueble(x,y,imagen,esPesado){
+		muebles.add(new Item(position = game.at(x,y),image= imagen, pesado = esPesado))
 	}
 	
 	method crearCeldaCamion(x,y,image){
@@ -80,6 +81,10 @@ class Nivel {
 	
 	method cargarPowerUps(){
 		powerUps.forEach({pU=>game.addVisual(pU)})
+	}
+	
+	method cargarHerramientas(){
+		herramientas.forEach({h=>game.addVisual(h)})
 	}
 	
 	method eliminarElementosNivel() {
@@ -169,7 +174,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=10){
 	self.crearMueble(4,6,"silla_izquierda.png")
 	self.crearMueble(3,7,"silla_abajo.png")
 	self.crearMueble(3,5,"silla_arriba.png")*/
-    self.crearMueble(3,6,"mesa.png")
+    self.crearMueble(3,6,"mesa.png", false)
 	self.agregarParedX(3,16,12) // pared del camion
 	self.agregarParedX(3,16,3) // pared del camion
 	self.agregarParedY(8,19,4) // pared del camion
@@ -220,7 +225,7 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=10){
 	self.crearMueble(10,11,"heladera.png")
 	self.crearMueble(16,8,"silla_izquierda.png")
 	self.crearMueble(16,9,"silla_izquierda.png")*/
-	self.crearMueble(14,10,"caja.png")
+	self.crearMueble(14,10,"caja.png", false)
 	self.cargarElementosNivel()
 	
 	self.crearPowerUp()

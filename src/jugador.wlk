@@ -12,6 +12,7 @@ object jugador {
 	var property direccionActual = arriba
 	var property direccionAgarre
 	var property itemActual
+	var property herramientaActual
 
 	method image() {
 		if (!self.tieneItem()) {
@@ -66,6 +67,7 @@ object jugador {
 
 
 	method tieneItem() = itemActual != null
+	method tieneHerramienta() = herramientaActual != null
 
 	method agarrarItem() {
 		if (!self.tieneItem() && self.hayItemEnfrente()) {

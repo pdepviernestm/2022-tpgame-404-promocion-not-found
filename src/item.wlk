@@ -8,6 +8,8 @@ class Item {
 	var property position = game.center()
 
 	var property image
+	
+	var property pesado
 
 	method puedeSerLlevado(jugador) {
 		return !self.colisiona(jugador.direccionActual())
