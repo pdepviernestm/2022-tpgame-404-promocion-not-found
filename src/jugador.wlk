@@ -10,9 +10,9 @@ class Jugador{
 	var property vaRapido = false
 	var property powerUpActual=null
 	var property direccionActual = arriba
-	var property direccionAgarre
-	var property itemActual	
-	var property herramientaActual
+	var property direccionAgarre = null
+	var property itemActual	= null
+	var property herramientaActual = null
 
 	method image() {
 		if (!self.tieneItem()) {
