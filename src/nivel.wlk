@@ -214,6 +214,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
 	self.agregarParedX(3,7,3)
 	self.agregarParedX(8,2,11)
 	self.agregarParedX(8,2,12)
+	self.agregarParedX(2,2,9)
 	
 	/*self.crearMueble(8,10,"caja.png")
 	self.crearMueble(2,6,"silla_derecha.png")
