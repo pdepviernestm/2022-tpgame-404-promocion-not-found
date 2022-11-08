@@ -14,7 +14,12 @@ class Item {
 	var property pesado
 
 	method puedeSerLlevado(unJugador) {
-		return !self.colisiona(unJugador.direccionActual(),unJugador) 
+		
+		if(self.pesado()) {
+			return unJugador.tieneHerramienta() && !self.colisiona(unJugador.direccionActual(),unJugador)
+		}
+	
+		return !self.colisiona(unJugador.direccionActual(),unJugador)
 	}
 
 	method serLlevado(unJugador) {
