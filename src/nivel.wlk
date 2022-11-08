@@ -301,9 +301,24 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 	override method cargarNivel(){
 		game.addVisual(fondo3)
 		self.agregarBordes(22,16,-1,-1)
-        self.agregarParedX(3,0,0) 
+        self.agregarParedX(3,0,0) // reloj
+        
+        self.agregarParedY(10,1,1)
+        self.agregarParedY(7,10,4)
+        self.agregarParedY(2,7,7)
+        self.agregarParedY(2,4,7)
+        self.agregarParedX(10,2,1)
+        self.agregarParedX(8,2,9)
+        self.agregarParedX(8,2,10)
+        self.agregarParedX(3,2,5)
+        self.agregarParedX(3,7,5)
+        self.agregarParedX(2,2,4)
+        self.agregarParedX(1,11,4)
+                
 		self.agregarJugador1(15,3)
    		self.agregarJugador2(13,3)
+   		
+   		self.cargarElementosNivel()
 	}
 }
 
