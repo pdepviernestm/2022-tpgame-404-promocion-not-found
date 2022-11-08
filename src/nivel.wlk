@@ -4,6 +4,7 @@ import jugador.*
 import powerUp.*
 import config.*
 import timer.*
+import herramienta.*
 
 class Nivel {
 	const property colisionables=[]
@@ -91,7 +92,7 @@ class Nivel {
 		game.addVisual(jugador)
         game.showAttributes(jugador)
         jugador.ubicarInicio(x,y)
-        game.onCollideDo(jugador, {powerUp => jugador.agarrarPoder(powerUp)})
+        game.onCollideDo(jugador, {objeto => jugador.agarrarObjeto(objeto)})
 	}
 
     method agregarJugador2(x,y){
@@ -99,7 +100,7 @@ class Nivel {
     		game.addVisual(jugador2)
             game.showAttributes(jugador2)
             jugador2.ubicarInicio(x,y)
-            game.onCollideDo(jugador2, {powerUp => jugador2.agarrarPoder(powerUp)})
+            game.onCollideDo(jugador2, {objeto => jugador2.agarrarObjeto(objeto)})
 		}
     }	
 	method eliminarJugadores(){
@@ -143,6 +144,10 @@ class Nivel {
 	
 	method crearPowerUp(){
 		powerUps.add(new VelocidadPower(position = self.generarPosicionDisponible()))
+	}
+	
+	method crearGuante(x, y){
+		herramientas.add(new Guante(position = game.at(x,y)))
 	}
 	
 	method reiniciarJugadores(){
@@ -215,7 +220,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
 	self.crearMueble(4,6,"silla_izquierda.png")
 	self.crearMueble(3,7,"silla_abajo.png")
 	self.crearMueble(3,5,"silla_arriba.png")*/
-    self.crearMueble(3,6,"mesa.png", false)
+    self.crearMueble(3,6,"mesa.png", true)
 	self.agregarParedX(3,16,12) // pared del camion
 	self.agregarParedX(3,16,3) // pared del camion
 	self.agregarParedY(8,19,4) // pared del camion
@@ -227,6 +232,8 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
     self.crearPowerUp()
 	self.crearPowerUp()
     self.cargarPowerUps()
+    self.crearGuante(13,6)
+    self.cargarHerramientas()
     /*game.addVisual(jugador)
     game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)*/

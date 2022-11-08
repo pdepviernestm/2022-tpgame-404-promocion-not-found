@@ -112,18 +112,15 @@ class Jugador{
 	}	
 	//return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
 	
-	method agarrarPoder(powerUp)
+	method agarrarObjeto(objeto)
 	{	
-		self.reiniciarPowerUp()
-		powerUpActual = powerUp
-		powerUpActual.darPoder(self)
+		objeto.serAgarrado(self)
 	}
-
+	
 	method reiniciarPowerUp(){
 		if(powerUpActual!=null)
 		powerUpActual.quitarPoder(self)
 	}
-	
 	
 }
 
