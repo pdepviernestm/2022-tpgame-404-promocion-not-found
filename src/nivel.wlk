@@ -322,10 +322,29 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
         self.agregarParedX(3,7,5)
         self.agregarParedX(2,2,4)
         self.agregarParedX(1,11,4)
+        
+        self.crearMueble(4,4,"horno.png", true)
+        self.crearMueble(2,8, "escritorio_con_pc.png", true)
+        self.crearMueble(2,7, "silla_arriba.png", false)
+        self.crearMueble(3,7, "silla_arriba.png", false)
+        self.crearMueble(8,7,"cama_verde.png", true)
+        self.crearMueble(9,8,"armario.png", true)
+        self.crearMueble(2,2,"silla_naranja_derecha.png", false)
+        self.crearMueble(4,2,"silla_naranja_izquierda.png", false)
+        self.crearMueble(3,2,"mesa_redonda.png", false)
+        self.crearMueble(7,4,"lampara.png", false)
+        self.crearMueble(8,4,"biblioteca.png", true)
+        self.crearMueble(9,4,"biblioteca.png", true)
+        self.crearMueble(8,2,"sillon.png", true)
+        self.crearMueble(5,8,"baniera.png", true)
+        self.crearMueble(6,7,"inodoro_izquierda.png", false)
+        
+        self.crearGuante(13,6)
                 
 		self.agregarJugador1(15,3)
    		self.agregarJugador2(13,3)
    		
+   		self.cargarHerramientas()
    		self.cargarElementosNivel()
 	}
 }
