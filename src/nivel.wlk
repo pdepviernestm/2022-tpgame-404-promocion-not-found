@@ -110,6 +110,13 @@ class Nivel {
 		}else game.removeVisual(jugador)
 	}
 	
+	method reiniciarHerramientasJugadores(){
+		if(config.dosJugadores()){
+			jugador.herramientaActual(null)
+			jugador2.herramientaActual(null)
+		}else jugador.herramientaActual(null)
+	}
+	
 	method eliminarElementosNivel() {
 		const elementosNivel=[colisionables,powerUps].flatten()
 		elementosNivel.forEach{ e => game.removeVisual(e)}
@@ -120,6 +127,7 @@ class Nivel {
 		powerUps.clear()
 		//game.removeVisual(jugador)
 		self.eliminarJugadores()
+		self.reiniciarHerramientasJugadores()
 	}
 	
 	method cargarSiguiente(nivel) {
