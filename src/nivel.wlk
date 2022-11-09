@@ -166,6 +166,7 @@ class Nivel {
 	}
 	
 	method crearGuante(){
+		game.sound("sonidos/aparecer_herramienta.mp3").play()
 		herramientas.add(new Guante(position = self.generarPosicionDisponible()))
 	}
 	
@@ -182,6 +183,7 @@ class Nivel {
 		self.eliminarElementosNivel()
         self.reiniciarJugadores()
 		gameOver.nivelSiguiente(self)
+		config.cancionDeFondo().pause()
 		config.nivelActual(gameOver)
 		gameOver.ejecutar()
 	}
@@ -213,6 +215,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 		if (config.nivelActual() == self) {
 			game.removeVisual(self)
 			nivelSiguiente.ejecutar()
+			config.cancionDeFondo().play()
 		}
 	}
 
@@ -220,7 +223,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=10){
 	
 	override method cargarNivel(){
 
@@ -396,6 +399,7 @@ object gameOver inherits Nivel(nivelSiguiente=null,tiempoNivel=0){
 		if (config.nivelActual() == self) {
 			game.removeVisual(self)
 			nivelSiguiente.ejecutar()
+			config.cancionDeFondo().resume()
 		}
 	}
 }

@@ -32,6 +32,7 @@ class Jugador{
 	}
 	
 	method mover(direccion){
+		game.sound("sonidos/caminar.mp3").play()
     	if(vaRapido){
     		self.moverAumentado(direccion)
     	}

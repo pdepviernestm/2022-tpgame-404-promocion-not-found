@@ -11,6 +11,7 @@ object config {
 	var property nivelActual = menu
 	var property dosJugadores = false
 	const property jugadores = [jugador,jugador2]
+	const property cancionDeFondo = game.sound("sonidos/soundtrack.mp3")
 	
 	method teclasJugador() {
 		keyboard.up().onPressDo{ jugador.mover(arriba)}
