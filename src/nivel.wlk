@@ -331,6 +331,12 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
         self.agregarParedX(3,7,5)
         self.agregarParedX(2,2,4)
         self.agregarParedX(1,11,4)
+        self.agregarParedX(3,17,1)
+        self.agregarParedX(3,17,10)
+        
+        self.agregarCeldaCamion(8,17,2)
+        self.agregarCeldaCamion(8,18,2)
+        self.agregarCeldaCamion(8,19,2)
         
         self.crearMueble(4,4,"horno.png", true)
         self.crearMueble(2,8, "escritorio_con_pc.png", true)
