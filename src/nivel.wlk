@@ -235,11 +235,20 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
 	self.agregarParedX(8,2,12)
 	self.agregarParedX(2,2,9)
 	
-	/*self.crearMueble(8,10,"caja.png", false)
+	self.crearMueble(7,10,"biblioteca.png", true)
+	self.crearMueble(8,10,"lampara.png", false)
+	self.crearMueble(9,9,"caja.png", false)
+	self.crearMueble(9,10,"cama.png", true)
+	self.crearMueble(2,10,"heladera.png", true)
+	self.crearMueble(3,10,"horno.png", true)
+	self.crearMueble(8,4,"sillon.png", true)
+	self.crearMueble(8,5,"mesa_gris_redonda.png", false)
+	self.crearMueble(9,5,"mesa_gris_redonda.png", false)
+	self.crearMueble(9,6,"televisor.png", false)
 	self.crearMueble(2,6,"silla_derecha.png", false)
 	self.crearMueble(4,6,"silla_izquierda.png", false)
 	self.crearMueble(3,7,"silla_abajo.png", false)
-	self.crearMueble(3,5,"silla_arriba.png", false)*/
+	self.crearMueble(3,5,"silla_arriba.png", false)
     self.crearMueble(3,6,"mesa.png", true)
 	self.agregarParedX(3,16,12) // pared del camion
 	self.agregarParedX(3,16,3) // pared del camion
