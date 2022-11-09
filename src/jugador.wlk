@@ -74,6 +74,7 @@ class Jugador{
 	method soltarItem() {
 		if (self.tieneItem()) {
 			game.sound("sonidos/soltar.mp3").play()
+			config.nivelActual().aumentarScore(itemActual)
 			itemActual.estaSiendoCargado(false)
 			itemActual = null
 			direccionAgarre = null
