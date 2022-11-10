@@ -82,6 +82,8 @@ class Nivel {
 	}
 
 	method cargarNivel() {
+		self.agregarBordes(22,16,-1,-1)
+        self.agregarParedX(3,0,0) //para el reloj
 	}
 	
 	method cargarElementosNivel(){
@@ -198,7 +200,7 @@ class Nivel {
 	}
 }
 
-object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
+object menu inherits Nivel(nivelSiguiente=nivel3,  tiempoNivel=0){
 
 	method image() = "prototipo_menu.png"
 
@@ -238,8 +240,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=180){
 	
 	override method cargarNivel(){
 
-    self.agregarBordes(22,16,-1,-1)
-    self.agregarParedX(2,0,0) //para el reloj
+    super()
 	self.agregarParedY(10,1,3)
 	self.agregarParedY(10,10,3)
 	self.agregarParedY(2,6,9)
@@ -288,13 +289,13 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=180){
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=90){
+object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=110){
 	
 
 	override method cargarNivel(){
+	super()
 	game.addVisual(fondo2)
-	self.agregarBordes(22,16,-1,-1)
-    self.agregarParedX(2,0,0) //para el reloj
+	
 	self.agregarCeldaCamion(8,0,4)
 	self.agregarCeldaCamion(8,1,4)
 	self.agregarCeldaCamion(8,2,4)
@@ -357,11 +358,10 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=90){
 	}
 }
 
-object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
+object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=180){
 	override method cargarNivel(){
+		super()
 		game.addVisual(fondo3)
-		self.agregarBordes(22,16,-1,-1)
-        self.agregarParedX(2,0,0) // reloj
         
         self.agregarParedY(10,1,1)
         self.agregarParedY(7,10,4)
@@ -429,7 +429,7 @@ object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
 
 object fondo2 {
 	const property position=game.at(-1,-1)
-	const property image="nivel_22.png"
+	const property image="nivel_2.png"
 }
 
 object fondo3 {
