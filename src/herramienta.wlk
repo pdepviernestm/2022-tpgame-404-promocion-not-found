@@ -5,7 +5,7 @@ class Herramienta {
 
 	var property position
 	method serAgarrado(jugador)
-	{
+	{   
 		game.sound("sonidos/agarrar_herramienta.mp3").play()
 		game.removeVisual(self)
 	}
@@ -16,9 +16,11 @@ class Guante inherits Herramienta {
 	method image() = "guante_magico.png"
 	
 	override method serAgarrado(jugador){
+		if(!jugador.tieneHerramienta()){     //no agarrar cuando se tiene herramienta
 		super(jugador)
 		jugador.herramientaActual(self)
-		config.nivelActual().herramientas().remove(self)
+		config.nivelActual().herramientas().remove(self)}
+		
 	}
 }
 

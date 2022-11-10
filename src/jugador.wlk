@@ -64,6 +64,13 @@ class Jugador{
     
     method tieneHerramienta() = herramientaActual != null
     
+    method accion(){
+    	if(!self.tieneItem()){
+    		self.agarrarItem()
+    	}
+    	else self.soltarItem()
+    }
+    
 	method agarrarItem() {
 		if (!self.tieneItem() && self.hayItemEnfrente() && !self.obtenerItemEnfrente().estaSiendoCargado()) {
 			game.sound("sonidos/agarrar.mp3").play()

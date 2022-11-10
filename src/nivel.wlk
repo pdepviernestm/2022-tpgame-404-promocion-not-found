@@ -200,7 +200,7 @@ class Nivel {
 	}
 }
 
-object menu inherits Nivel(nivelSiguiente=nivel3,  tiempoNivel=0){
+object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 
 	method image() = "prototipo_menu.png"
 
@@ -236,7 +236,7 @@ object menu inherits Nivel(nivelSiguiente=nivel3,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=180){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=200){
 	
 	override method cargarNivel(){
 
@@ -282,6 +282,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=180){
     /*game.addVisual(jugador)
     game.showAttributes(jugador)
     jugador.ubicarInicio(15,3)*/
+    
     self.agregarJugador1(15,3)
     self.agregarJugador2(13,3)
 	digitosReloj.generarDigitos(tiempoNivel, game.origin())
@@ -384,7 +385,6 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=180){
         self.crearMueble(4,4,"horno.png", true)
         self.crearMueble(2,8, "escritorio_con_pc.png", true)
         self.crearMueble(2,7, "silla_arriba.png", false)
-        self.crearMueble(3,7, "silla_arriba.png", false)
         self.crearMueble(8,7,"cama_verde.png", true)
         self.crearMueble(9,8,"armario.png", true)
         self.crearMueble(2,2,"silla_naranja_derecha.png", false)

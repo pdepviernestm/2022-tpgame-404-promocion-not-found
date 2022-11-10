@@ -18,14 +18,14 @@ object config {
 		keyboard.down().onPressDo{ jugador.mover(abajo)}
 		keyboard.left().onPressDo{ jugador.mover(izquierda)}
 		keyboard.right().onPressDo{ jugador.mover(derecha)}
-		keyboard.shift().onPressDo{ jugador.agarrarItem()}
-		keyboard.control().onPressDo{ jugador.soltarItem()}
+		keyboard.shift().onPressDo{ jugador.accion()}
+		//keyboard.control().onPressDo{ jugador.soltarItem()}
 		keyboard.w().onPressDo{ jugador2.mover(arriba)}
 		keyboard.s().onPressDo{ jugador2.mover(abajo)}
 		keyboard.a().onPressDo{ jugador2.mover(izquierda)}
 		keyboard.d().onPressDo{ jugador2.mover(derecha)}
-		keyboard.space().onPressDo{ jugador2.agarrarItem()}
-		keyboard.e().onPressDo{ jugador2.soltarItem()}
+		keyboard.space().onPressDo{ jugador2.accion()}
+		//keyboard.e().onPressDo{ jugador2.soltarItem()}
 		keyboard.enter().onPressDo{ nivelActual.empezarJuego()}
 		keyboard.num1().onPressDo{ nivelActual.elegirUnJugador()}
 		keyboard.num2().onPressDo{ nivelActual.elegirDosJugadores()}
