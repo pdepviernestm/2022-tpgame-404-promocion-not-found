@@ -69,10 +69,13 @@ class Nivel {
 	}
 	
 	method aumentarScore(unMueble) {
+		const jugadores = config.jugadores().size()
+		const puntosParaGuante = 3
+		
 		if (unMueble.estaEnElCamion()){
 			score.aumentar()
-			if(score.puntos() == 3) {
-				self.crearGuante()
+			if(score.puntos() == puntosParaGuante*jugadores) {
+				jugadores.times({i => self.crearGuante()})
 				self.cargarHerramientas()
 			}
 		}
@@ -209,6 +212,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
     method elegirDosJugadores() {
 		if (config.nivelActual() == self) {
+			config.jugadores().add(jugador2)
 			config.dosJugadores(true)
 		}
 	}

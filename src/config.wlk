@@ -10,7 +10,7 @@ object config {
 	const property celdas = 50
 	var property nivelActual = menu
 	var property dosJugadores = false
-	const property jugadores = [jugador,jugador2]
+	const property jugadores = [jugador]
 	const property cancionDeFondo = game.sound("sonidos/soundtrack.mp3")
 	
 	method teclasJugador() {
