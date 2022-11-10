@@ -411,6 +411,10 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
    		digitosReloj.generarDigitos(tiempoNivel, game.origin())
     	timer.empezar()
 	}
+	override method eliminarElementosNivel(){
+		super()
+		game.removeVisual(fondo3)
+	}
 }
 
 object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
