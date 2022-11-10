@@ -290,7 +290,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=200){
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=110){
+object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=150){
 	
 
 	override method cargarNivel(){
