@@ -8,6 +8,7 @@ class Jugador{
 	const property nombre
 	var property position = game.at(-1,-1)
 	var property vaRapido = false
+	var property estaInmovilizado = false
 	var property powerUpActual=null
 	var property direccionActual = arriba
 	var property direccionAgarre = null
@@ -107,10 +108,10 @@ class Jugador{
 	}
 
 	method colisiona() {
-		if (self.tieneItem() && self.itemActualEnfrente()) {
+		if (self.tieneItem() && self.itemActualEnfrente() && !estaInmovilizado) {
 			return false 
 		} else 	return self.obtenerPosEnfrente().allElements().any({ e => config.nivelActual().colisionables().contains(e)
-			                                                              || config.jugadores().contains(e)	})
+			                                                              || config.jugadores().contains(e)	}) || estaInmovilizado
 	}	
 	//return config.nivelActual().colisionables().any{ colisionable => colisionable.position() == self.obtenerPosEnfrente() }
 	

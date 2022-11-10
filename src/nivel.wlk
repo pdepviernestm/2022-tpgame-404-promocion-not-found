@@ -165,8 +165,12 @@ class Nivel {
 		else return self.generarPosicionDisponible()
 	}
 	
-	method crearPowerUp(){
+	method crearPowerUpVelocidad(){
 		powerUps.add(new VelocidadPower(position = self.generarPosicionDisponible()))
+	}
+	
+	method crearPowerUpMalo(){
+		powerUps.add(new PowerMalo(position = self.generarPosicionDisponible()))
 	}
 	
 	method crearGuante(){
@@ -194,7 +198,7 @@ class Nivel {
 	}
 }
 
-object menu inherits Nivel(nivelSiguiente=nivel3,  tiempoNivel=0){
+object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 
 	method image() = "prototipo_menu.png"
 
@@ -267,8 +271,11 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
 	self.agregarCeldaCamion(8,18,4)
 	
     self.cargarElementosNivel()
-    self.crearPowerUp()
-	self.crearPowerUp()
+    self.crearPowerUpVelocidad()
+	self.crearPowerUpVelocidad()
+	self.crearPowerUpVelocidad()
+	self.crearPowerUpMalo()
+	self.crearPowerUpMalo()
     self.cargarPowerUps()
     /*game.addVisual(jugador)
     game.showAttributes(jugador)
@@ -325,7 +332,12 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=90){
 	self.crearMueble(14,9,"mesa.png", true)
 	self.cargarElementosNivel()
 	
-	self.crearPowerUp()
+	self.crearPowerUpVelocidad()
+	self.crearPowerUpVelocidad()
+	self.crearPowerUpVelocidad()
+	self.crearPowerUpVelocidad()
+	self.crearPowerUpMalo()
+	self.crearPowerUpMalo()
     self.cargarPowerUps()
     
 	/*game.addVisual(jugador)
@@ -383,8 +395,15 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
         self.crearMueble(8,2,"sillon.png", true)
         self.crearMueble(5,8,"baniera.png", true)
         self.crearMueble(6,7,"inodoro_izquierda.png", false)
-
-   		self.cargarElementosNivel()
+		self.cargarElementosNivel()
+   		
+   		self.crearPowerUpVelocidad()
+		self.crearPowerUpVelocidad()
+		self.crearPowerUpVelocidad()
+		self.crearPowerUpMalo()
+		self.crearPowerUpMalo()
+		self.crearPowerUpMalo()
+    	self.cargarPowerUps()
    	               
 		self.agregarJugador1(15,3)
    		self.agregarJugador2(13,3)		
