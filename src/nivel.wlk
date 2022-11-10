@@ -223,7 +223,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=10){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
 	
 	override method cargarNivel(){
 
