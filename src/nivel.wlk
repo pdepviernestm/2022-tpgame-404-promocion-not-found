@@ -218,7 +218,8 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
     method elegirDosJugadores() {
 		if (config.nivelActual() == self) {
-			config.jugadores().add(jugador2)
+			if(config.jugadores().contains(jugador2)){}
+			else config.jugadores().add(jugador2)
 			config.dosJugadores(true)
 		}
 	}
@@ -236,7 +237,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=200){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=170){
 	
 	override method cargarNivel(){
 
@@ -290,7 +291,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=200){
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=110){
+object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=225){
 	
 
 	override method cargarNivel(){
@@ -310,7 +311,8 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=110){
 	self.agregarParedX(13,5,14)
 	self.agregarParedX(13,5,12)
 	self.agregarParedY(2,9,10)
-	self.agregarParedX(9,5,7)
+	self.agregarParedX(3,5,7)
+	self.agregarParedX(4,10,7)
 	self.agregarParedX(4,7,6)
 	self.agregarParedX(4,7,5)
 	self.agregarParedY(3,13,5)
