@@ -429,7 +429,7 @@ object fondo3 {
 
 object gameOver inherits Nivel(nivelSiguiente=null,tiempoNivel=0){
 	const property position=game.origin()
-	const property image="reintentar_nivel.png"
+	const property image="reintentar_nivel_"+config.jugadores().size().toString()+".png"
 	
 	override method ejecutar() {
 		game.addVisual(self)
