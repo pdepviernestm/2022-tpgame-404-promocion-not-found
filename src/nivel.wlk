@@ -225,6 +225,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 		if (config.nivelActual() == self) {
 			game.removeVisual(self)
 			nivelSiguiente.ejecutar()
+		    config.cancionDeFondo().shouldLoop(true)
 			config.cancionDeFondo().play()
 		}
 	}
@@ -233,7 +234,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=90){
 	
 	override method cargarNivel(){
 
