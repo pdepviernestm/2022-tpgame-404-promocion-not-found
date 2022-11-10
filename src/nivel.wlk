@@ -128,7 +128,7 @@ class Nivel {
 	}
 	
 	method eliminarElementosNivel() {
-		const elementosNivel=[colisionables,powerUps].flatten()
+		const elementosNivel=[colisionables,powerUps,herramientas].flatten()
 		elementosNivel.forEach{ e => game.removeVisual(e)}
 		colisionables.clear()
 		muebles.clear()
@@ -144,6 +144,7 @@ class Nivel {
 	method cargarSiguiente(nivel) {
 		self.eliminarElementosNivel()
         self.reiniciarJugadores()
+        score.resetear()
         nivelSiguiente.ejecutar()
 	}
 	
@@ -182,6 +183,7 @@ class Nivel {
 	method timeOver(){
 		self.eliminarElementosNivel()
         self.reiniciarJugadores()
+        score.resetear()
 		gameOver.nivelSiguiente(self)
 		config.cancionDeFondo().pause()
 		config.nivelActual(gameOver)

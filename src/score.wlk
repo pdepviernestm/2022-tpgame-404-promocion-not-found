@@ -5,4 +5,8 @@ object score {
 		puntos += 1
 	}
 	
+	method resetear(){
+		puntos = 0
+	}
+	
 }
