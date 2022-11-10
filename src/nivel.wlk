@@ -234,7 +234,7 @@ object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
 	
 
 
-object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=90){
+object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=180){
 	
 	override method cargarNivel(){
 
@@ -429,7 +429,7 @@ object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
 
 object fondo2 {
 	const property position=game.at(-1,-1)
-	const property image="nivel_2.png"
+	const property image="nivel_22.png"
 }
 
 object fondo3 {

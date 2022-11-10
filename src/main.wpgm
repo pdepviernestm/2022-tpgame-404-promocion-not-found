@@ -10,7 +10,7 @@ program main {
 	game.width(config.ancho())
 	game.cellSize(config.celdas())
 	game.title("Moving Out")
-	game.boardGround("fondo.png")
+	game.boardGround("fondo1.png")
 	
 	config.teclasJugador()
 	menu.ejecutar()
