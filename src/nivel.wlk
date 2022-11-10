@@ -276,7 +276,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=80){
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=10){
+object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=90){
 	
 
 	override method cargarNivel(){
@@ -302,11 +302,23 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=10){
 	self.agregarParedY(3,13,5)
 	self.agregarParedY(3,16,5)
 	self.agregarParedY(7,17,7)
-	/*self.crearMueble(7,10,"mesa.png")
-	self.crearMueble(10,11,"heladera.png")
-	self.crearMueble(16,8,"silla_izquierda.png")
-	self.crearMueble(16,9,"silla_izquierda.png")*/
-	self.crearMueble(14,10,"caja.png", false)
+	self.crearMueble(10,11,"heladera.png", true)
+	self.crearMueble(7,11,"televisor.png", false)
+	self.crearMueble(7,10,"mesa_redonda.png", false)
+	self.crearMueble(7,9,"silla_arriba.png", false)
+	self.crearMueble(6,11,"parlante.png", false)
+	self.crearMueble(8,11,"parlante.png", false)
+	self.crearMueble(11,11,"horno.png", true)
+	self.crearMueble(12,10,"silla_naranja_izquierda.png", false)
+	self.crearMueble(10,10,"silla_naranja_derecha.png", false)
+	self.crearMueble(11,10,"mesa_gris_redonda.png", false)
+	self.crearMueble(15,11,"biblioteca.png", false)
+	self.crearMueble(14,11,"lampara.png", false)
+	self.crearMueble(16,8,"caja.png", false)
+	self.crearMueble(6,8,"caja.png", false)
+	self.crearMueble(8,6,"baniera.png", true)
+	self.crearMueble(16,9,"sillon_izquierda.png", true)
+	self.crearMueble(14,9,"mesa.png", true)
 	self.cargarElementosNivel()
 	
 	self.crearPowerUp()
