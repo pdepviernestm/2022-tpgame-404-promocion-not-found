@@ -414,7 +414,12 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 }
 
 object fin inherits Nivel (nivelSiguiente=null,tiempoNivel=0){
+	const property position=game.origin()
+	const property image="fin_"+config.jugadores().size().toString()+".png"
 	
+	override method ejecutar() {
+		game.addVisual(self)
+	}
 }
 
 object fondo2 {
