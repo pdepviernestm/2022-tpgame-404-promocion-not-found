@@ -194,7 +194,7 @@ class Nivel {
 	}
 }
 
-object menu inherits Nivel(nivelSiguiente=nivel1,  tiempoNivel=0){
+object menu inherits Nivel(nivelSiguiente=nivel3,  tiempoNivel=0){
 
 	method image() = "prototipo_menu.png"
 
@@ -286,7 +286,7 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=90){
 	override method cargarNivel(){
 	game.addVisual(fondo2)
 	self.agregarBordes(22,16,-1,-1)
-    self.agregarParedX(3,0,0) //para el reloj
+    self.agregarParedX(2,0,0) //para el reloj
 	self.agregarCeldaCamion(8,0,4)
 	self.agregarCeldaCamion(8,1,4)
 	self.agregarCeldaCamion(8,2,4)
@@ -348,7 +348,7 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
 	override method cargarNivel(){
 		game.addVisual(fondo3)
 		self.agregarBordes(22,16,-1,-1)
-        self.agregarParedX(3,0,0) // reloj
+        self.agregarParedX(2,0,0) // reloj
         
         self.agregarParedY(10,1,1)
         self.agregarParedY(7,10,4)
@@ -383,11 +383,14 @@ object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=60){
         self.crearMueble(8,2,"sillon.png", true)
         self.crearMueble(5,8,"baniera.png", true)
         self.crearMueble(6,7,"inodoro_izquierda.png", false)
-                
-		self.agregarJugador1(15,3)
-   		self.agregarJugador2(13,3)
-   		
+
    		self.cargarElementosNivel()
+   	               
+		self.agregarJugador1(15,3)
+   		self.agregarJugador2(13,3)		
+   		
+   		digitosReloj.generarDigitos(tiempoNivel, game.origin())
+    	timer.empezar()
 	}
 }
 
