@@ -19,16 +19,15 @@ object config {
 		keyboard.left().onPressDo{ jugador.mover(izquierda)}
 		keyboard.right().onPressDo{ jugador.mover(derecha)}
 		keyboard.shift().onPressDo{ jugador.accion()}
-		//keyboard.control().onPressDo{ jugador.soltarItem()}
 		keyboard.w().onPressDo{ jugador2.mover(arriba)}
 		keyboard.s().onPressDo{ jugador2.mover(abajo)}
 		keyboard.a().onPressDo{ jugador2.mover(izquierda)}
 		keyboard.d().onPressDo{ jugador2.mover(derecha)}
 		keyboard.space().onPressDo{ jugador2.accion()}
-		//keyboard.e().onPressDo{ jugador2.soltarItem()}
 		keyboard.enter().onPressDo{ nivelActual.empezarJuego()}
 		keyboard.num1().onPressDo{ nivelActual.elegirUnJugador()}
 		keyboard.num2().onPressDo{ nivelActual.elegirDosJugadores()}
+		keyboard.m().onPressDo{ self.pausePlay()}
 	}
 	
 	method nivelActual(unNivel){
@@ -38,6 +37,14 @@ object config {
 	method jugadorContrario(unJugador){
 		 if (unJugador.nombre()=="jugador_") return jugador2
 		 else return jugador
+	}
+	method pausePlay(){
+		if(nivelActual!=menu && nivelActual!=gameOver){
+		if(cancionDeFondo.paused()){
+			cancionDeFondo.resume()
+		}
+		else cancionDeFondo.pause()
+	}
 	}
 }
 
