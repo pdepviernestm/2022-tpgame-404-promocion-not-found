@@ -82,6 +82,9 @@ class Nivel {
 	}
 
 	method cargarNivel() {
+		if(!config.dosJugadores()){
+		tiempoNivel+=35
+	    }
 		self.agregarBordes(22,16,-1,-1)
         self.agregarParedX(3,0,0) //para el reloj
 	}
@@ -292,7 +295,6 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=170){
 }
 
 object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=150){
-	
 
 	override method cargarNivel(){
 	super()
