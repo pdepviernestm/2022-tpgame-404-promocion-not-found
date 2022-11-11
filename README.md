@@ -17,14 +17,14 @@ Los jugadores deben llevar todos los muebles al camión de mudanza antes del tie
 También encontrarán bloques misteriosos que pueden congelar al jugador que colisiona con ellos o darle más velocidad.
 
 ## Controles
--1: seleccionar modo un jugador
--2: seleccionar modo 2 jugadores
--Enter: comenzar el juego/reintentar nivel
--Flechas direccionales: mover jugador1
--Shift: acción jugador1
--W,A,S,D: mover jugador2
--Space: acción jugador2
--m: pausar/reanudar música
+- 1: seleccionar modo un jugador
+- 2: seleccionar modo 2 jugadores
+- Enter: comenzar el juego/reintentar nivel
+- Flechas direccionales: mover jugador1
+- Shift: acción jugador1
+- W,A,S,D: mover jugador2
+- Space: acción jugador2
+- m: pausar/reanudar música
 
 ## Otros
 
