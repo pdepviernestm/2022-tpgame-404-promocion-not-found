@@ -294,7 +294,7 @@ object nivel1 inherits Nivel(nivelSiguiente=nivel2, tiempoNivel=170){
 	}
 }
 
-object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=150){
+object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=210){
 
 	override method cargarNivel(){
 	super()
@@ -363,7 +363,7 @@ object nivel2 inherits Nivel (nivelSiguiente=nivel3, tiempoNivel=150){
 	}
 }
 
-object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=180){
+object nivel3 inherits Nivel (nivelSiguiente=fin, tiempoNivel=145){
 	override method cargarNivel(){
 		super()
 		game.addVisual(fondo3)
