@@ -9,7 +9,14 @@
 
 ## Capturas
 
-(agregar)
+https://user-images.githubusercontent.com/102632487/206304377-d82dfbbc-0cea-4572-b46c-34ca4e80fadb.mp4
+
+
+https://user-images.githubusercontent.com/102632487/206305535-62bf481a-d034-475d-a791-b8a91d2a8e0e.mp4
+
+
+https://user-images.githubusercontent.com/102632487/206303750-c2b01072-9ee1-481e-901c-66e557eac048.mp4
+
 
 ## Instrucciones:
 Los jugadores deben llevar todos los muebles al camión de mudanza antes del tiempo establecido. Algunos muebles son demasiado pesados por lo que necesitaran un guante especial para cargarlos. El guante (1 para cada jugador) aparecerá aleatoriamente luego de que se coloquen en el camión 3 muebles por cada jugador.
