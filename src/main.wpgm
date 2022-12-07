@@ -1,0 +1,19 @@
+import wollok.game.*
+import config.*
+import jugador.*
+import item.*
+import powerUp.*
+import nivel.*
+
+program main {
+	game.height(config.alto())
+	game.width(config.ancho())
+	game.cellSize(config.celdas())
+	game.title("Moving Out")
+	game.boardGround("fondo1.png")
+	
+	config.teclasJugador()
+	menu.ejecutar()
+		
+	game.start()
+}
